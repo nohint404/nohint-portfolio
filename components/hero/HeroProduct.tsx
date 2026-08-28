@@ -52,7 +52,8 @@ export function HeroProduct() {
         >
           <a
             href="#work"
-            className="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-7 text-[15px] font-medium text-primary-foreground transition-all hover:bg-white active:scale-[0.98]"
+            className="inline-flex min-h-11 items-center justify-center bg-primary px-7 text-[15px] font-medium text-primary-foreground transition-all hover:bg-white active:scale-[0.98]"
+            style={{ borderRadius: "2px" }}
           >
             View work
           </a>
@@ -60,7 +61,8 @@ export function HeroProduct() {
             href="https://github.com/nohint404"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex min-h-11 items-center justify-center rounded-full bg-secondary px-7 text-[15px] font-medium ring-1 ring-border hover:bg-[#232326]"
+            className="inline-flex min-h-11 items-center justify-center border border-border bg-secondary px-7 text-[15px] font-medium hover:bg-[#232326]"
+            style={{ borderRadius: "2px" }}
           >
             GitHub
           </a>
@@ -68,8 +70,11 @@ export function HeroProduct() {
       </motion.div>
 
       <motion.div style={{ scale, y, opacity }} className="mx-auto mt-10 max-w-[980px] sm:mt-14">
-        <div className="relative overflow-hidden rounded-[24px] bg-[#0F0F12] p-2 sm:rounded-[28px] sm:p-3 shadow-[0_24px_80px_rgba(0,0,0,0.65)] ring-1 ring-white/10">
-          <div className="overflow-hidden rounded-[16px] bg-[#080808] ring-1 ring-white/10 sm:rounded-[20px]">
+        <div
+          className="relative overflow-hidden bg-[#0F0F12] p-2 sm:p-3 shadow-[0_24px_80px_rgba(0,0,0,0.65)] ring-1 ring-white/10"
+          style={{ borderRadius: "2px", clipPath: "polygon(0 0, 100% 0, 100% 88%, 94% 100%, 0 100%)" }}
+        >
+          <div className="overflow-hidden bg-[#080808] ring-1 ring-white/10" style={{ borderRadius: "2px" }}>
             <div className="flex h-9 items-center gap-1.5 border-b border-white/[0.06] bg-white/[0.02] px-4">
               <span className="size-3 rounded-full bg-[#FF5F57]" aria-hidden="true" />
               <span className="size-3 rounded-full bg-[#FFBD2E]" aria-hidden="true" />
@@ -81,21 +86,21 @@ export function HeroProduct() {
               </span>
             </div>
             <div className="grid gap-3 bg-[#080808] p-3 sm:grid-cols-[1.15fr_0.85fr] sm:gap-3 sm:p-4">
-              <div className="relative overflow-hidden rounded-xl bg-[#111113] p-4 ring-1 ring-white/5 sm:p-5">
+              <div className="relative overflow-hidden bg-[#111113] p-4 ring-1 ring-white/5 sm:p-5" style={{ borderRadius: "2px" }}>
                 <p className="text-xs font-medium tracking-wide text-muted-foreground">Selected work</p>
                 <div className="mt-3 grid grid-cols-3 gap-2">
-                  <span className="aspect-[3/4] rounded-lg bg-white" />
-                  <span className="aspect-[3/4] rounded-lg bg-white/10 ring-1 ring-white/10" />
-                  <span className="aspect-[3/4] rounded-lg bg-white/5 ring-1 ring-white/10 hidden sm:block" />
+                  <span className="aspect-[3/4] bg-white" style={{ borderRadius: "2px" }} />
+                  <span className="aspect-[3/4] bg-white/10 ring-1 ring-white/10" style={{ borderRadius: "2px" }} />
+                  <span className="aspect-[3/4] bg-white/5 ring-1 ring-white/10 hidden sm:block" style={{ borderRadius: "2px" }} />
                 </div>
                 <div className="mt-4 flex items-center gap-2">
-                  <span className="h-2 w-16 rounded-full bg-white" />
-                  <span className="h-2 w-8 rounded-full bg-white/15" />
+                  <span className="h-2 w-16 bg-white" style={{ borderRadius: "1px" }} />
+                  <span className="h-2 w-8 bg-white/15" style={{ borderRadius: "1px" }} />
                 </div>
               </div>
-              <div className="hidden flex-col justify-between rounded-xl bg-[#111113] p-4 ring-1 ring-white/5 sm:flex sm:p-5">
+              <div className="hidden flex-col justify-between bg-[#111113] p-4 ring-1 ring-white/5 sm:flex sm:p-5" style={{ borderRadius: "2px" }}>
                 <div className="flex items-center gap-3">
-                  <span className="relative size-9 overflow-hidden rounded-full bg-white/10 ring-1 ring-white/10">
+                  <span className="relative size-9 overflow-hidden bg-white/10 ring-1 ring-white/10" style={{ borderRadius: "2px" }}>
                     <Image src="/avatar.jpg" alt="" width={36} height={36} className="size-9 object-cover" unoptimized />
                   </span>
                   <div>
@@ -103,7 +108,7 @@ export function HeroProduct() {
                     <p className="mt-1 text-xs text-muted-foreground">Available for work</p>
                   </div>
                 </div>
-                <div className="rounded-xl bg-[#0F0F12] p-3 ring-1 ring-white/5">
+                <div className="bg-[#0F0F12] p-3 ring-1 ring-white/5" style={{ borderRadius: "2px" }}>
                   <p className="text-xs leading-5 text-muted-foreground">
                     Portfolio lives at <span className="text-foreground">nohint.dev</span> — dark, fast, accessible.
                   </p>

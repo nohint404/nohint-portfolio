@@ -13,7 +13,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-transparent bg-background/70 apple-blur supports-[backdrop-filter]:bg-background/60">
       <a
         href="#main-content"
-        className="fixed top-3 left-3 z-[100] -translate-y-20 rounded-full bg-primary px-4 py-3 text-sm font-medium text-primary-foreground transition-transform focus:translate-y-0"
+        className="fixed top-3 left-3 z-[100] -translate-y-20 bg-primary px-4 py-3 text-sm font-medium text-primary-foreground transition-transform focus:translate-y-0"
+        style={{ borderRadius: "2px" }}
       >
         Skip to content
       </a>
@@ -22,9 +23,10 @@ export function SiteHeader() {
           href="/"
           translate="no"
           aria-label="nohint404 home"
-          className="flex min-h-11 items-center gap-3 rounded-full px-2"
+          className="flex min-h-11 items-center gap-3 px-2"
+          style={{ borderRadius: "2px" }}
         >
-          <span className="relative size-7 overflow-hidden rounded-full bg-card ring-1 ring-border">
+          <span className="relative size-7 overflow-hidden bg-card ring-1 ring-border" style={{ borderRadius: "2px" }}>
             <Image
               src="https://avatars.githubusercontent.com/u/238106931?v=4"
               alt=""
@@ -44,7 +46,8 @@ export function SiteHeader() {
               <a
                 key={link.href}
                 href={link.href}
-                className="rounded-full px-3.5 py-2 text-[14px] font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                className="px-3.5 py-2 text-[14px] font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                style={{ borderRadius: "2px" }}
               >
                 {link.label}
               </a>
@@ -60,7 +63,8 @@ export function SiteHeader() {
           <a
             key={link.href}
             href={link.href}
-            className="flex h-11 flex-1 items-center justify-center rounded-full bg-secondary text-center text-sm font-medium text-muted-foreground"
+            className="flex h-11 flex-1 items-center justify-center bg-secondary text-center text-sm font-medium text-muted-foreground"
+            style={{ borderRadius: "2px" }}
           >
             {link.label}
           </a>

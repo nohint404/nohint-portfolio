@@ -75,7 +75,8 @@ export function CommandPalette() {
         aria-haspopup="dialog"
         aria-expanded={open}
         onClick={() => updateOpen(true)}
-        className="rounded-full bg-secondary text-muted-foreground hover:bg-[#232326] hover:text-foreground"
+        className="bg-secondary text-muted-foreground hover:bg-[#232326] hover:text-foreground"
+        style={{ borderRadius: "2px" }}
       >
         <span aria-hidden="true" className="text-[13px]">
           ⌘

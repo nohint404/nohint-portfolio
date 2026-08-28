@@ -33,7 +33,7 @@ test.describe("portfolio shell", () => {
     await expect(page).toHaveTitle(/nohint404/);
     await expect(page.getByRole("heading", { level: 1, name: /nohint404/i })).toBeVisible();
     await expect(page.getByRole("heading", { level: 2, name: "Selected work" })).toBeVisible();
-    await expect(page.getByRole("heading", { level: 3, name: "PsyStream" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 3, name: "nohint.dev" })).toBeVisible();
     await expect(page.locator("body")).not.toContainText(/NaN|undefined/);
     expect(errors).toEqual([]);
   });
@@ -114,6 +114,7 @@ test.describe("portfolio shell", () => {
 
     const undersized = await page.locator("a, button").evaluateAll((elements) =>
       elements.flatMap((element) => {
+        if (element.closest("[data-nextjs-dev-tools]") || element.getAttribute("aria-label")?.includes("Next.js")) return [];
         const rect = element.getBoundingClientRect();
         const visible = rect.width > 0 && rect.height > 0 && rect.bottom > 0 && rect.top < window.innerHeight;
         if (!visible || (rect.width >= 44 && rect.height >= 44)) return [];

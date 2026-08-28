@@ -5,21 +5,6 @@ import type { Portfolio, Project } from "./types";
 
 const curatedProjects: readonly Project[] = [
   {
-    title: "PsyStream",
-    slug: "psystream",
-    summary: "The best website where you can see a tv series, film or anime.",
-    narrative:
-      "A TypeScript web app for discovering TV series, films and anime — built for fast browsing and clean detail views.",
-    stack: ["TypeScript", "Next.js", "React"],
-    featured: true,
-    order: 1,
-    status: "live",
-    repository: { owner: "nohint404", name: "PsyStream" },
-    links: {
-      source: "https://github.com/nohint404/PsyStream",
-    },
-  },
-  {
     title: "nohint.dev",
     slug: "nohint-portfolio",
     summary: "Personal developer portfolio — this site.",
@@ -27,7 +12,7 @@ const curatedProjects: readonly Project[] = [
       "A minimal, dark portfolio built with Next.js and TypeScript. Focus on projects, performance and accessibility.",
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     featured: true,
-    order: 2,
+    order: 1,
     status: "building",
     repository: { owner: "nohint404", name: "nohint-portfolio" },
     links: {
