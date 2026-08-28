@@ -1,12 +1,14 @@
 # nohint404 — nohint.dev
 
-The production portfolio for `nohint404`: a dark, engineering-first record of verified work with inspectable source and graceful failure boundaries.
+Personal developer portfolio for `nohint404` — Software Developer.
 
 Production target: [nohint.dev](https://nohint.dev)
 
 ## What is implemented
 
-- A project-led home page with one featured, verified repository
+- A personal hero with role and short introduction
+- A project-led home page with 2 featured and 4 additional real GitHub repositories
+- Stack, about and contact sections
 - A keyboard- and touch-accessible command palette (`⌘/Ctrl + K`)
 - An honest Labs empty state and a branded, useful 404 page
 - Server-only GitHub repository metadata with schema validation and hourly caching

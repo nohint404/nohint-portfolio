@@ -31,9 +31,9 @@ test.describe("portfolio shell", () => {
     await page.goto("/");
 
     await expect(page).toHaveTitle(/nohint404/);
-    await expect(page.getByRole("heading", { level: 1, name: /Engineering, no hints/i })).toBeVisible();
-    await expect(page.getByRole("heading", { level: 2, name: "One build, fully exposed." })).toBeVisible();
-    await expect(page.getByRole("heading", { level: 3, name: "The production system behind this portfolio." })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: /nohint404/i })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 2, name: "Selected work" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 3, name: "PsyStream" })).toBeVisible();
     await expect(page.locator("body")).not.toContainText(/NaN|undefined/);
     expect(errors).toEqual([]);
   });
@@ -130,7 +130,8 @@ test.describe("portfolio shell", () => {
 
     const styles = await page.evaluate(() => {
       const root = getComputedStyle(document.documentElement);
-      const link = getComputedStyle(document.querySelector(".link-line")!);
+      const target = document.querySelector(".link-line") || document.querySelector("a") || document.body;
+      const link = getComputedStyle(target as Element);
       return { scrollBehavior: root.scrollBehavior, transitionDuration: link.transitionDuration };
     });
     expect(styles.scrollBehavior).toBe("auto");

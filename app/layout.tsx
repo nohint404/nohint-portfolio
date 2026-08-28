@@ -42,26 +42,26 @@ const websiteSchema = {
   "@type": "WebSite",
   name: "nohint404",
   url: "https://nohint.dev",
-  description: "The engineering portfolio of nohint404.",
+  description: "Personal developer portfolio of nohint404 — Software Developer.",
   sameAs: ["https://github.com/nohint404"],
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nohint.dev"),
-  title: { default: "nohint404 — Engineering, without the guesswork", template: "%s — nohint404" },
-  description: "The engineering portfolio of nohint404. Verified work, deliberate systems, no invented metrics.",
+  title: { default: "nohint404 — Software Developer", template: "%s — nohint404" },
+  description: "Personal portfolio of nohint404 — Software Developer. Projects, stack and contact.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "https://nohint.dev",
     siteName: "nohint404",
-    title: "nohint404 — Engineering, without the guesswork",
-    description: "Verified engineering work, deliberate systems, and inspectable source.",
+    title: "nohint404 — Software Developer",
+    description: "Personal portfolio of nohint404 — projects, stack and contact.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "nohint404 — Engineering, without the guesswork",
-    description: "Verified engineering work, deliberate systems, and inspectable source.",
+    title: "nohint404 — Software Developer",
+    description: "Personal portfolio of nohint404 — projects, stack and contact.",
   },
   authors: [{ name: "nohint404", url: "https://github.com/nohint404" }],
   category: "technology",
@@ -79,10 +79,10 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable} font-sans`}>
       <body>
         <template
-          data-design-contract="d09773b0"
+          data-design-contract="personal-01"
           dangerouslySetInnerHTML={{
             __html:
-              "<!-- THESIS: a signal dossier makes evidence visible and refuses the generic centered portfolio hero. OWN-WORLD: matte black, bone text, amber signal, instrument-scale typography, hairline traces. STORY: identify nohint404, inspect verified work, open the source. FIRST VIEWPORT: identity occupies the left field while one measured signal crosses into the featured build and its source action. FORM: signal dossier, grounded direction 5, seed d09773b0. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance -->",
+              "<!-- THESIS: a personal developer portfolio proves quality through work, not manifestos. OWN-WORLD: OLED black, bone text, amber accent, editorial display + neutral sans, hairline borders, restrained motion. STORY: meet nohint404, see real projects with source, scan stack, reach GitHub. FIRST VIEWPORT: identity and role left, quiet personal card right, actions View projects / GitHub / Contact. FORM: personal dark portfolio, Experience mode, personal-01. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance -->",
           }}
         />
         <script
