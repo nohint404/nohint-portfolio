@@ -10,15 +10,14 @@ export const container = {
 };
 
 export const item = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { y: 16 },
   visible: {
-    opacity: 1,
     y: 0,
     transition: { duration: 0.5, ease: easePremium },
   },
 };
 
 export const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easePremium } },
+  hidden: { y: 20 },
+  visible: { y: 0, transition: { duration: 0.6, ease: easePremium } },
 };

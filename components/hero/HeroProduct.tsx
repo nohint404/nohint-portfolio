@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { GithubMark } from "@/components/icons/GithubMark";
 import { CountUp } from "@/components/ui/CountUp";
+import { BlurText } from "@/components/ui/BlurText";
 
 export function HeroProduct() {
   const ref = useRef<HTMLDivElement>(null);
@@ -28,28 +29,30 @@ export function HeroProduct() {
         className="mx-auto max-w-[980px] text-center"
       >
         <motion.p
-          variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } }}
+          variants={{ hidden: { y: 16 }, visible: { y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } }}
           className="text-[12px] font-semibold tracking-[0.14em] text-[#a1a1a6] uppercase"
         >
           nohint404 — Software Developer
         </motion.p>
         <motion.h1
           id="hero-title"
-          variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } }}
+          variants={{ hidden: { y: 16 }, visible: { y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } }}
           className="mx-auto mt-4 max-w-[720px] text-[40px] font-semibold leading-[0.9] tracking-[-0.04em] sm:text-[56px] lg:text-[64px]"
           style={{ fontFamily: "var(--type-display), var(--type-sans), sans-serif" }}
         >
           <span translate="no">nohint404</span>
-          <span className="block bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">Portfolio built like a product.</span>
+          <span className="block bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+            <BlurText text="Portfolio built like a product." delay={0.1} />
+          </span>
         </motion.h1>
         <motion.p
-          variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } }}
+          variants={{ hidden: { y: 16 }, visible: { y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } }}
           className="mx-auto mt-5 max-w-[640px] text-[17px] leading-7 text-muted-foreground sm:text-[19px] sm:leading-8"
         >
           Fast, quiet web experiences in TypeScript and Next.js — with curiosity for Rust and systems work. Every project links to its source.
         </motion.p>
         <motion.div
-          variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } }}
+          variants={{ hidden: { y: 16 }, visible: { y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } }}
           className="mt-8 flex flex-wrap items-center justify-center gap-3"
         >
           <a
@@ -71,7 +74,7 @@ export function HeroProduct() {
           </a>
         </motion.div>
         <motion.div
-          variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { delay: 0.4, duration: 0.6 } } }}
+          variants={{ hidden: { y: 8 }, visible: { y: 0, transition: { delay: 0.4, duration: 0.6 } } }}
           className="mx-auto mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-muted-foreground"
         >
           <span>

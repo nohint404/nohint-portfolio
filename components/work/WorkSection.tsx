@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import type { Project } from "@/lib/portfolio/types";
 import { GithubMark } from "@/components/icons/GithubMark";
+import { TiltedCard } from "@/components/ui/TiltedCard";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -11,8 +12,8 @@ export function WorkSection({ featured, rest }: { featured: Project[]; rest: Pro
     <section id="work" aria-labelledby="work-title" className="border-t border-border/60">
       <div className="site-frame py-14 sm:py-20">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: false, margin: "-80px", amount: 0.2 }}
           transition={{ duration: 0.6, ease }}
           className="grid grid-cols-12 gap-4"
@@ -44,17 +45,19 @@ export function WorkSection({ featured, rest }: { featured: Project[]; rest: Pro
 
         <div className="mt-10 grid grid-cols-12 gap-5">
           {featured.map((project, idx) => (
-            <motion.article
+            <TiltedCard
               key={project.slug}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, margin: "-60px", amount: 0.2 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.6, delay: idx * 0.08, ease }}
-              whileHover={{ y: -6 }}
               className={`col-span-12 overflow-hidden bg-card ring-1 ring-border ${idx === 0 ? "lg:col-span-8 lg:ml-0" : "lg:col-span-8 lg:col-start-5 lg:-mt-6"} grid ${idx === 0 ? "lg:grid-cols-[1.1fr_0.9fr]" : "lg:grid-cols-[0.9fr_1.1fr]"}`}
-              style={{ borderRadius: "2px", clipPath: idx === 0 ? "polygon(0 0, 100% 0, 100% 92%, 92% 100%, 0 100%)" : "polygon(8% 0, 100% 0, 100% 100%, 0 100%, 0 8%)" }}
+              style={{ borderRadius: "2px", clipPath: idx === 0 ? "polygon(0 0, 100% 0, 100% 92%, 92% 100%, 0 100%)" : "polygon(8% 0, 100% 0, 100% 100%, 0 100%, 0 8%)" } as React.CSSProperties}
             >
+              <motion.div
+                initial={{ y: 28 }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: false, margin: "-60px", amount: 0.2 }}
+                exit={{ y: -12 }}
+                transition={{ duration: 0.6, delay: idx * 0.08, ease }}
+                className="contents"
+              >
               <div className={`p-7 sm:p-9 ${idx === 1 ? "order-2 lg:order-1" : ""}`}>
                 <p className="font-mono text-[11px] tracking-[0.12em] text-muted-foreground uppercase">Featured · 0{idx + 1}</p>
                 <h3 className="mt-3 text-[28px] font-semibold leading-none tracking-[-0.03em] sm:text-[32px]" translate="no">
@@ -114,7 +117,8 @@ export function WorkSection({ featured, rest }: { featured: Project[]; rest: Pro
                   </div>
                 </div>
               </div>
-            </motion.article>
+              </motion.div>
+            </TiltedCard>
           ))}
         </div>
 
@@ -125,10 +129,10 @@ export function WorkSection({ featured, rest }: { featured: Project[]; rest: Pro
               href={project.links.source}
               target="_blank"
               rel="noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ y: 20 }}
+              whileInView={{ y: 0 }}
               viewport={{ once: false, margin: "-40px", amount: 0.2 }}
-              exit={{ opacity: 0, y: -10 }}
+              exit={{ y: -10 }}
               transition={{ duration: 0.5, delay: i * 0.06, ease }}
               whileHover={{ y: -4 }}
               className={`group flex flex-col bg-card p-6 ring-1 ring-border hover:bg-[#151517] hover:ring-white/10 col-span-12 sm:col-span-6 ${i % 2 === 0 ? "lg:col-span-3 lg:ml-2" : "lg:col-span-3 lg:mr-2"} ${i === 2 ? "lg:col-start-3" : ""}`}
