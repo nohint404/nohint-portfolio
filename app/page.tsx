@@ -1,5 +1,6 @@
-import { getPortfolio } from "@/lib/portfolio/data";
+import Image from "next/image";
 import Link from "next/link";
+import { getPortfolio } from "@/lib/portfolio/data";
 
 export default async function HomePage() {
   const portfolio = await getPortfolio();
@@ -8,29 +9,30 @@ export default async function HomePage() {
 
   return (
     <main id="main-content">
-      <section aria-labelledby="hero-title" className="site-frame py-16 sm:py-20 lg:py-28">
-        <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16">
-          <div>
+      {/* HERO — Apple-quality, calm, project visuals as hero */}
+      <section aria-labelledby="hero-title" className="site-frame pb-10 pt-10 sm:pb-16 sm:pt-14 lg:pb-20 lg:pt-16">
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10">
+          <div className="max-w-[36rem]">
             <h1
               id="hero-title"
-              className="balanced-heading font-display text-[clamp(3rem,9vw,6rem)] leading-[0.9] font-semibold tracking-[-0.045em]"
+              className="text-[42px] font-semibold leading-[0.95] tracking-[-0.04em] sm:text-[56px] lg:text-[64px]"
+              style={{ fontFamily: "var(--type-display), var(--type-sans), sans-serif" }}
             >
               <span translate="no" className="block">
                 nohint404
               </span>
-              <span className="mt-3 block max-w-xl text-lg font-normal leading-7 tracking-[-0.015em] text-muted-foreground sm:text-xl sm:leading-8">
-                Software Developer
+              <span className="mt-2 block text-[22px] font-medium leading-none tracking-[-0.02em] text-muted-foreground sm:text-[26px]">
+                Developer
               </span>
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-              Building for the web with TypeScript, React and Next.js — with a
-              curiosity for Rust, Python and the tools around them. I like
-              quiet, fast interfaces and code that&apos;s easy to read.
+            <p className="mt-6 max-w-xl text-[17px] leading-7 text-muted-foreground sm:text-[18px] sm:leading-8">
+              I build fast, quiet web experiences with TypeScript and Next.js, and explore systems work in Rust and
+              Python. This is my personal site — projects, stack and ways to reach me.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#work"
-                className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-signal-soft"
+                className="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 text-[15px] font-medium text-primary-foreground transition-all hover:bg-white active:scale-[0.98]"
               >
                 View projects
               </a>
@@ -38,217 +40,292 @@ export default async function HomePage() {
                 href="https://github.com/nohint404"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-card px-5 text-sm font-medium transition-colors hover:border-signal/40 hover:bg-accent"
+                className="inline-flex min-h-11 items-center justify-center rounded-full bg-secondary px-6 text-[15px] font-medium text-foreground ring-1 ring-border transition-colors hover:bg-[#232326]"
               >
                 GitHub
-                <span aria-hidden="true" className="ml-2">
+                <span aria-hidden="true" className="ml-2 text-muted-foreground">
                   ↗
                 </span>
                 <span className="sr-only"> (opens in a new tab)</span>
               </a>
-              <a
-                href="#contact"
-                className="inline-flex min-h-11 items-center justify-center rounded-md px-5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Contact
-              </a>
-            </div>
-            <div className="mt-10 flex flex-wrap gap-6 border-t border-border pt-6 text-sm">
-              <span className="text-muted-foreground">
-                <span className="font-medium text-foreground">6</span> projects on GitHub
-              </span>
-              <span className="text-muted-foreground">
-                <span className="font-medium text-foreground">TypeScript</span> · Rust · Python
-              </span>
-              <a
-                href="https://github.com/nohint404"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-11 items-center text-sm text-muted-foreground underline decoration-border underline-offset-4 hover:text-foreground"
-              >
-                github.com/nohint404
-              </a>
             </div>
           </div>
 
-          <div className="relative">
-            <div className="overflow-hidden rounded-xl border border-border bg-card">
-              <div className="aspect-[4/3] bg-[radial-gradient(ellipse_at_top,_rgba(226,162,74,0.16),transparent_60%),linear-gradient(180deg,_rgba(255,255,255,0.04),transparent)] p-7 sm:p-8">
-                <div className="flex h-full flex-col justify-between">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-[0.7rem] tracking-[0.14em] text-muted-foreground uppercase">
-                      Available for work
-                    </span>
-                    <span className="inline-flex items-center gap-2">
-                      <span className="size-1.5 rounded-full bg-signal" aria-hidden="true" />
-                      <span className="font-mono text-xs text-signal">Open</span>
-                    </span>
-                  </div>
-                  <div>
-                    <p className="font-display text-5xl font-semibold tracking-[-0.04em] sm:text-6xl" translate="no">
-                      n<span className="text-signal">.</span>
-                    </p>
-                    <p className="mt-3 max-w-xs text-sm leading-6 text-muted-foreground">
-                      Portfolio lives at{" "}
-                      <span translate="no" className="text-foreground">
-                        nohint.dev
-                      </span>{" "}
-                      — dark, fast, and fully responsive.
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap gap-2 font-mono text-[0.68rem] tracking-[0.08em] text-muted-foreground uppercase">
-                    <span className="rounded-md border border-border bg-background px-2.5 py-1.5">Next.js 16</span>
-                    <span className="rounded-md border border-border bg-background px-2.5 py-1.5">TypeScript</span>
-                    <span className="rounded-md border border-border bg-background px-2.5 py-1.5">Vercel</span>
+          {/* Hero visual — layered real project windows, Apple product style */}
+          <div className="relative lg:h-[520px]">
+            <div className="relative mx-auto max-w-[560px] lg:absolute lg:inset-0">
+              {/* Back card — nohint.dev */}
+              <div className="absolute right-6 top-6 hidden w-[62%] overflow-hidden rounded-2xl bg-[#141416] shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-white/10 sm:block lg:right-0 lg:top-10 lg:w-[64%]">
+                <div className="flex h-7 items-center gap-1.5 border-b border-white/[0.06] px-3">
+                  <span className="size-3 rounded-full bg-white/12" />
+                  <span className="size-3 rounded-full bg-white/12" />
+                  <span className="size-3 rounded-full bg-white/12" />
+                  <span className="ml-3 text-[11px] tracking-wide text-muted-foreground">nohint.dev</span>
+                </div>
+                <div className="p-5">
+                  <p className="text-sm font-medium tracking-tight">nohint404</p>
+                  <p className="mt-1 text-xs leading-5 text-muted-foreground">Personal portfolio — dark, fast, accessible.</p>
+                  <div className="mt-4 flex gap-1.5">
+                    <span className="h-1.5 w-8 rounded-full bg-white" />
+                    <span className="h-1.5 w-12 rounded-full bg-white/15" />
+                    <span className="h-1.5 w-6 rounded-full bg-white/10" />
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-between border-t border-border bg-surface px-5 py-4 sm:px-6">
-                <span className="text-sm font-medium">View selected work</span>
-                <a href="#work" aria-label="Scroll to projects" className="inline-flex size-11 items-center justify-center rounded-md bg-primary text-primary-foreground">
-                  <span aria-hidden="true">↓</span>
-                </a>
+
+              {/* Front card — PsyStream */}
+              <div className="relative overflow-hidden rounded-[20px] bg-[#0F0F12] shadow-[0_24px_80px_rgba(0,0,0,0.65)] ring-1 ring-white/10">
+                <div className="flex h-8 items-center gap-1.5 border-b border-white/[0.07] bg-white/[0.02] px-4">
+                  <span className="size-3 rounded-full bg-[#FF5F57]" aria-hidden="true" />
+                  <span className="size-3 rounded-full bg-[#FFBD2E]" aria-hidden="true" />
+                  <span className="size-3 rounded-full bg-[#28C840]" aria-hidden="true" />
+                  <span className="ml-3 text-[11px] font-medium tracking-wide text-muted-foreground">PsyStream</span>
+                  <span className="ml-auto hidden text-[11px] text-muted-foreground sm:block">PsyStream — Streaming</span>
+                </div>
+                <div className="relative aspect-[16/9.5] bg-[#0B0B0D] p-4 sm:p-5">
+                  <div className="flex h-full flex-col">
+                    <div className="flex items-center gap-3">
+                      <span className="relative size-9 overflow-hidden rounded-xl bg-[#6d5cff] shadow-[0_0_20px_rgba(109,92,255,0.35)]">
+                        <Image src="/projects/psystream.png" alt="" width={36} height={36} className="size-9 object-cover opacity-90" unoptimized />
+                      </span>
+                      <div>
+                        <p className="text-sm font-semibold leading-none">PsyStream</p>
+                        <p className="mt-1 text-xs text-muted-foreground">TV · Film · Anime</p>
+                      </div>
+                      <span className="ml-auto hidden rounded-full bg-white px-3 py-1 text-xs font-medium text-black sm:inline-flex">
+                        Explore
+                      </span>
+                    </div>
+
+                    <div className="mt-4 flex-1 rounded-xl bg-[#15151A] p-3 ring-1 ring-white/5">
+                      <div className="flex gap-2">
+                        <span className="h-6 flex-1 rounded-full bg-white text-[11px] font-medium leading-6 text-black/60 pl-3">Search series…</span>
+                        <span className="hidden size-6 place-items-center rounded-full bg-white/10 text-white/60 sm:grid">⌕</span>
+                      </div>
+                      <div className="mt-3 grid grid-cols-4 gap-2 sm:gap-3">
+                        {[
+                          "from-[#6d5cff]/30 to-[#6d5cff]/5",
+                          "from-[#a78bfa]/25 to-transparent",
+                          "from-white/10 to-white/5",
+                          "from-[#6d5cff]/20 to-[#a78bfa]/10",
+                        ].map((g, i) => (
+                          <div
+                            key={i}
+                            className={`aspect-[2/3] rounded-lg bg-gradient-to-b ${g} ring-1 ring-white/5`}
+                          />
+                        ))}
+                      </div>
+                      <div className="mt-3 flex items-center gap-2 text-[11px] text-muted-foreground">
+                        <span className="h-1 w-12 rounded-full bg-white/15" />
+                        <span className="h-1 w-8 rounded-full bg-white/10" />
+                        <span className="ml-auto hidden text-muted-foreground sm:block">Apple TV polish · Netflix discovery</span>
+                      </div>
+                    </div>
+
+                    <div className="mt-3 flex items-center gap-2">
+                      <span className="inline-flex h-6 items-center rounded-full bg-white px-3 text-xs font-medium text-black">Play</span>
+                      <span className="inline-flex h-6 items-center rounded-full bg-white/10 px-3 text-xs font-medium text-white/80">
+                        Details
+                      </span>
+                      <span className="ml-auto text-xs text-muted-foreground">TypeScript · Astro</span>
+                    </div>
+                  </div>
+                </div>
               </div>
+
+              <p className="mt-4 hidden text-center text-xs text-muted-foreground sm:block">
+                Real project UI — PsyStream preview
+              </p>
             </div>
-            <p className="mt-4 text-center font-mono text-[0.68rem] tracking-[0.1em] text-muted-foreground uppercase">
-              Premium dark · fully responsive · accessible
-            </p>
           </div>
         </div>
       </section>
 
-      <section id="work" aria-labelledby="work-title" className="section-rule scroll-mt-8 py-16 sm:py-20">
-        <div className="site-frame">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <h2 id="work-title" className="balanced-heading text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-                Selected work
-              </h2>
-              <p className="mt-3 max-w-xl text-base leading-7 text-muted-foreground">
-                A few things I&apos;ve built — from web apps to experiments in other languages.
-              </p>
-            </div>
-            <a
-              href="https://github.com/nohint404?tab=repositories"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-11 items-center text-sm font-medium text-muted-foreground underline decoration-border underline-offset-4 hover:text-foreground"
+      {/* PROJECTS — Apple product style: large moments, breathing room */}
+      <section id="work" aria-labelledby="work-title" className="border-t border-border/60">
+        <div className="site-frame py-14 sm:py-20">
+          <div className="max-w-2xl">
+            <h2
+              id="work-title"
+              className="text-[28px] font-semibold tracking-[-0.03em] sm:text-[32px]"
+              style={{ fontFamily: "var(--type-display), var(--type-sans), sans-serif" }}
             >
-              All repositories <span aria-hidden="true" className="ml-1">↗</span>
-              <span className="sr-only"> (opens in a new tab)</span>
-            </a>
+              Selected work
+            </h2>
+            <p className="mt-3 text-[16px] leading-7 text-muted-foreground">
+              Projects I&apos;ve shipped — web apps and experiments. Every tile links to its source.
+            </p>
           </div>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            {featured.map((project) => {
-              const stars = project.metrics?.stars ?? null;
-              const lang = project.metrics?.primaryLanguage ?? project.stack[0] ?? null;
-              return (
-                <article
-                  key={project.slug}
-                  className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-signal/25"
-                >
-                  <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-[linear-gradient(180deg,rgba(255,255,255,0.05),transparent),radial-gradient(ellipse_at_top_left,rgba(226,162,74,0.18),transparent_55%)]">
-                    <div className="absolute inset-0 p-6 sm:p-7">
+          {/* Featured 1 — PsyStream large cinematic */}
+          {featured[0] && (
+            <article className="mt-10 overflow-hidden rounded-[24px] bg-card ring-1 ring-border">
+              <div className="grid lg:grid-cols-[1.05fr_1.25fr]">
+                <div className="p-8 sm:p-10 lg:p-12">
+                  <p className="text-xs font-medium tracking-wide text-muted-foreground">Featured · 01</p>
+                  <h3 className="mt-3 text-[30px] font-semibold leading-none tracking-[-0.03em] sm:text-[36px]" translate="no">
+                    {featured[0].title}
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-7 text-muted-foreground">{featured[0].summary}</p>
+                  <p className="mt-4 text-[14px] leading-6 text-muted-foreground/90">{featured[0].narrative}</p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {featured[0].stack.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground ring-1 ring-border"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <a
+                      href={featured[0].links.source}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground"
+                    >
+                      GitHub <span aria-hidden="true" className="ml-1">↗</span>
+                    </a>
+                    {featured[0].links.live && (
+                      <a
+                        href={featured[0].links.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex min-h-11 items-center justify-center rounded-full bg-secondary px-5 text-sm font-medium ring-1 ring-border"
+                      >
+                        Live demo
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <div className="relative bg-[#0A0A0C] p-4 sm:p-6 lg:p-8">
+                  <div className="overflow-hidden rounded-2xl bg-[#141418] ring-1 ring-white/10">
+                    <div className="flex h-8 items-center gap-1.5 border-b border-white/5 px-3">
+                      <span className="size-3 rounded-full bg-white/10" />
+                      <span className="size-3 rounded-full bg-white/10" />
+                      <span className="size-3 rounded-full bg-white/10" />
+                      <span className="ml-2 text-xs text-muted-foreground">psystream</span>
+                    </div>
+                    <div className="aspect-[16/10] bg-gradient-to-br from-[#1A1A24] via-[#12121A] to-[#0B0B0F] p-5">
                       <div className="flex h-full flex-col justify-between">
-                        <div className="flex items-center justify-between gap-4">
-                          <span className="font-mono text-[0.7rem] tracking-[0.12em] text-muted-foreground uppercase">
-                            {project.stack[0]} · {project.status}
-                          </span>
-                          {stars !== null && (
-                            <span className="font-mono text-xs text-muted-foreground">★ {stars}</span>
-                          )}
+                        <div className="flex gap-3">
+                          <span className="h-20 w-14 rounded-lg bg-white/10" />
+                          <span className="h-20 w-14 rounded-lg bg-[#6d5cff]/20 ring-1 ring-[#6d5cff]/20" />
+                          <span className="hidden h-20 w-14 rounded-lg bg-white/5 sm:block" />
+                          <span className="hidden h-20 w-14 rounded-lg bg-white/5 lg:block" />
                         </div>
                         <div>
-                          <h3 className="font-display text-3xl font-semibold tracking-[-0.03em] sm:text-4xl" translate="no">
-                            {project.title}
-                          </h3>
-                          <p className="mt-2 max-w-md text-sm leading-6 text-muted-foreground">{project.summary}</p>
+                          <p className="text-sm font-medium">Continue watching</p>
+                          <div className="mt-3 h-1.5 w-full rounded-full bg-white/10">
+                            <div className="h-1.5 w-[38%] rounded-full bg-[#6d5cff]" />
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-1 flex-col p-6 sm:p-7">
-                    <p className="text-sm leading-6 text-muted-foreground">{project.narrative}</p>
-                    <ul className="mt-5 flex flex-wrap gap-2">
-                      {project.stack.map((t) => (
-                        <li key={t} className="rounded-full border border-border bg-surface px-3 py-1 font-mono text-[0.7rem] tracking-[0.06em] text-muted-foreground">
-                          {t}
-                        </li>
-                      ))}
-                      {lang && !project.stack.includes(lang) && (
-                        <li className="rounded-full border border-border bg-surface px-3 py-1 font-mono text-[0.7rem] tracking-[0.06em] text-muted-foreground">
-                          {lang}
-                        </li>
-                      )}
-                    </ul>
-                    <div className="mt-6 flex flex-wrap gap-4">
-                      <a
-                        href={project.links.source}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex min-h-11 items-center text-sm font-semibold hover:text-signal-soft"
-                      >
-                        GitHub <span aria-hidden="true" className="ml-1">↗</span>
-                        <span className="sr-only"> (opens in a new tab)</span>
-                      </a>
-                      {project.links.live && (
-                        <a href={project.links.live} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center text-sm font-medium text-muted-foreground hover:text-foreground">
-                          Live <span aria-hidden="true" className="ml-1">↗</span>
-                        </a>
-                      )}
+                </div>
+              </div>
+            </article>
+          )}
+
+          {/* Featured 2 — nohint.dev split */}
+          {featured[1] && (
+            <article className="mt-6 grid overflow-hidden rounded-[24px] bg-card ring-1 ring-border lg:grid-cols-[1.2fr_0.9fr]">
+              <div className="relative bg-[#0A0A0C] p-6 sm:p-8">
+                <div className="overflow-hidden rounded-2xl bg-[#111113] ring-1 ring-white/10">
+                  <div className="aspect-[4/3] p-6">
+                    <p className="font-mono text-xs tracking-wide text-muted-foreground">nohint.dev</p>
+                    <p className="mt-2 text-3xl font-semibold tracking-[-0.03em]">nohint404</p>
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground">Personal developer portfolio — this site.</p>
+                    <div className="mt-6 grid grid-cols-3 gap-2">
+                      <span className="h-16 rounded-xl bg-white text-xs font-medium leading-[4rem] text-black text-center">Work</span>
+                      <span className="h-16 rounded-xl bg-white/5 ring-1 ring-white/10" />
+                      <span className="h-16 rounded-xl bg-white/5 ring-1 ring-white/10" />
                     </div>
                   </div>
-                </article>
-              );
-            })}
+                </div>
+              </div>
+              <div className="p-8 sm:p-10 lg:p-12">
+                <p className="text-xs font-medium tracking-wide text-muted-foreground">Featured · 02</p>
+                <h3 className="mt-3 text-[28px] font-semibold tracking-[-0.03em]" translate="no">
+                  {featured[1].title}
+                </h3>
+                <p className="mt-3 text-[15px] leading-7 text-muted-foreground">{featured[1].summary}</p>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">{featured[1].narrative}</p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {featured[1].stack.map((t) => (
+                    <span key={t} className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground ring-1 ring-border">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-8 flex gap-3">
+                  <a
+                    href={featured[1].links.source}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground"
+                  >
+                    GitHub
+                  </a>
+                  <a href={featured[1].links.live} className="inline-flex min-h-11 items-center justify-center rounded-full bg-secondary px-5 text-sm font-medium ring-1 ring-border">
+                    Live
+                  </a>
+                </div>
+              </div>
+            </article>
+          )}
+
+          {/* Rest — calm grid, not card hell */}
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {rest.map((project) => (
+              <a
+                key={project.slug}
+                href={project.links.source}
+                target="_blank"
+                rel="noreferrer"
+                className="group relative flex flex-col rounded-2xl bg-card p-6 ring-1 ring-border transition-all hover:bg-[#151517] hover:ring-white/10"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-[15px] font-semibold tracking-[-0.015em]" translate="no">
+                    {project.title}
+                  </h3>
+                  <span className="rounded-full bg-secondary px-2.5 py-1 text-[11px] font-medium text-muted-foreground ring-1 ring-border">
+                    {project.stack[0]}
+                  </span>
+                </div>
+                <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground">{project.summary}</p>
+                <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-muted-foreground group-hover:text-foreground">
+                  Source <span aria-hidden="true">↗</span>
+                </span>
+              </a>
+            ))}
           </div>
 
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {rest.map((project) => {
-              const stars = project.metrics?.stars;
-              return (
-                <article
-                  key={project.slug}
-                  className="flex flex-col rounded-xl border border-border bg-card p-6 transition-colors hover:border-signal/20 sm:p-6"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-base font-semibold leading-tight tracking-[-0.015em]" translate="no">
-                      {project.title}
-                    </h3>
-                    {typeof stars === "number" && <span className="shrink-0 font-mono text-xs text-muted-foreground">★ {stars}</span>}
-                  </div>
-                  <p className="mt-2 line-clamp-3 text-sm leading-6 text-muted-foreground">{project.summary}</p>
-                  <p className="mt-3 text-xs font-mono tracking-[0.06em] text-muted-foreground uppercase">{project.stack.join(" · ")}</p>
-                  <div className="mt-5 flex flex-wrap gap-4">
-                    <a href={project.links.source} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center text-sm font-medium hover:text-signal-soft">
-                      Source <span aria-hidden="true" className="ml-1">↗</span>
-                    </a>
-                    {project.links.live && (
-                      <a href={project.links.live} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center text-sm text-muted-foreground hover:text-foreground">
-                        Live <span aria-hidden="true" className="ml-1">↗</span>
-                      </a>
-                    )}
-                  </div>
-                </article>
-              );
-            })}
+          <div className="mt-8 flex justify-center">
+            <a
+              href="https://github.com/nohint404?tab=repositories"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-secondary px-6 text-sm font-medium ring-1 ring-border hover:bg-[#232326]"
+            >
+              View all repositories
+            </a>
           </div>
         </div>
       </section>
 
-      <section id="stack" aria-labelledby="stack-title" className="section-rule py-16 sm:py-20">
-        <div className="site-frame">
-          <div className="max-w-2xl">
-            <h2 id="stack-title" className="balanced-heading text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              Stack
-            </h2>
-            <p className="mt-3 text-base leading-7 text-muted-foreground">The tools I reach for most often.</p>
-          </div>
-          <div className="mt-8 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+      {/* STACK — Apple-like grouped typography */}
+      <section aria-labelledby="stack-title" className="border-t border-border/60">
+        <div className="site-frame py-12 sm:py-16">
+          <h2 id="stack-title" className="text-[22px] font-semibold tracking-[-0.02em]">
+            Stack
+          </h2>
+          <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {portfolio.capabilities.map((c) => (
-              <div key={c.name} className="bg-card p-6 sm:p-7">
-                <h3 className="text-sm font-semibold tracking-[-0.01em]">{c.name}</h3>
+              <div key={c.name}>
+                <h3 className="text-sm font-semibold">{c.name}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">{c.description}</p>
               </div>
             ))}
@@ -256,54 +333,60 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section id="about" aria-labelledby="about-title" className="section-rule py-16 sm:py-20">
-        <div className="site-frame grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
-            <h2 id="about-title" className="balanced-heading text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              About
-            </h2>
+      {/* ABOUT — with real avatar */}
+      <section id="about" aria-labelledby="about-title" className="border-t border-border/60">
+        <div className="site-frame grid gap-10 py-12 sm:py-16 lg:grid-cols-[auto_1fr] lg:gap-14">
+          <div className="relative size-[92px] overflow-hidden rounded-[22px] bg-card ring-1 ring-border sm:size-[112px]">
+            <Image
+              src="/avatar.jpg"
+              alt="nohint404"
+              width={112}
+              height={112}
+              className="size-full object-cover"
+              unoptimized
+            />
           </div>
           <div className="max-w-2xl">
-            <p className="text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-              I&apos;m <span translate="no">nohint404</span> — a developer who enjoys building clean, fast web experiences and exploring systems work in Rust and Python.
-              I care about thoughtful interfaces, good performance, and code that teammates can read without comments.
+            <h2 id="about-title" className="text-[22px] font-semibold tracking-[-0.02em]">
+              About
+            </h2>
+            <p className="mt-3 text-[16px] leading-7 text-muted-foreground">
+              I&apos;m <span translate="no">nohint404</span> — a developer focused on the web, with interests in systems and tooling.
+              I enjoy building interfaces that feel calm and fast, and exploring languages from TypeScript to Rust.
             </p>
-            <p className="mt-4 text-base leading-7 text-muted-foreground">
-              This site is intentionally small and honest: every project links to its source, every metric comes from GitHub when available, and
-              everything else stays out until it&apos;s real.
+            <p className="mt-4 text-sm leading-6 text-muted-foreground">
+              This site is intentionally small: real projects, real source, no invented clients or metrics.
             </p>
           </div>
         </div>
       </section>
 
-      <section id="contact" aria-labelledby="contact-title" className="section-rule py-16 sm:py-20">
-        <div className="site-frame">
-          <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h2 id="contact-title" className="balanced-heading text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-                Contact
-              </h2>
-              <p className="mt-3 max-w-xl text-base leading-7 text-muted-foreground">
-                The fastest way to reach me is GitHub. Open an issue, a discussion, or just follow along.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="https://github.com/nohint404"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-5 text-sm font-semibold text-primary-foreground hover:bg-signal-soft"
-              >
-                GitHub — nohint404 <span aria-hidden="true" className="ml-2">↗</span>
-                <span className="sr-only"> (opens in a new tab)</span>
-              </a>
-              <Link
-                href="/labs"
-                className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-card px-5 text-sm font-medium hover:border-signal/30"
-              >
-                Labs
-              </Link>
-            </div>
+      {/* CONTACT — simple */}
+      <section id="contact" aria-labelledby="contact-title" className="border-t border-border/60">
+        <div className="site-frame flex flex-col gap-6 py-12 sm:flex-row sm:items-center sm:justify-between sm:py-16">
+          <div>
+            <h2 id="contact-title" className="text-[22px] font-semibold tracking-[-0.02em]">
+              Contact
+            </h2>
+            <p className="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
+              Fastest way is GitHub — open an issue or follow along.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="https://github.com/nohint404"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground"
+            >
+              GitHub — nohint404 <span aria-hidden="true" className="ml-2">↗</span>
+            </a>
+            <Link
+              href="/labs"
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-secondary px-6 text-sm font-medium ring-1 ring-border"
+            >
+              Labs
+            </Link>
           </div>
         </div>
       </section>

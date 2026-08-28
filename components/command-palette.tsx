@@ -69,16 +69,18 @@ export function CommandPalette() {
       <Button
         ref={triggerRef}
         type="button"
-        variant="outline"
+        variant="secondary"
         size="sm"
         aria-label="Open command palette"
         aria-haspopup="dialog"
         aria-expanded={open}
         onClick={() => updateOpen(true)}
-        className="font-mono text-[0.6875rem] tracking-[0.12em] uppercase"
+        className="rounded-full bg-secondary text-muted-foreground hover:bg-[#232326] hover:text-foreground"
       >
-        <span aria-hidden="true">⌘</span>
-        <span>K</span>
+        <span aria-hidden="true" className="text-[13px]">
+          ⌘
+        </span>
+        <span className="text-[13px]">K</span>
       </Button>
       <CommandDialog
         open={open}
@@ -98,15 +100,12 @@ export function CommandPalette() {
                   value={`${command.label} ${command.hint}`}
                   onSelect={() => selectCommand(command.href, "external" in command)}
                 >
-                  <span
-                    aria-hidden="true"
-                    className="font-mono text-[0.6875rem] text-signal"
-                  >
+                  <span aria-hidden="true" className="font-mono text-[0.6875rem] text-foreground">
                     0{index + 1}
                   </span>
                   <span className="flex min-w-0 flex-col gap-0.5">
                     <span>{command.label}</span>
-                    <span className="truncate text-xs text-muted-foreground">
+                    <span className="truncate text-xs text-muted-foreground" style={{ color: "#c2c2c6" }}>
                       {command.hint}
                     </span>
                   </span>

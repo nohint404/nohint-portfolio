@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CommandPalette } from "@/components/command-palette";
 
@@ -9,43 +10,62 @@ const links = [
 
 export function SiteHeader() {
   return (
-    <header className="relative z-40 border-b border-border bg-background/95">
+    <header className="sticky top-0 z-40 border-b border-transparent bg-background/70 apple-blur supports-[backdrop-filter]:bg-background/60">
       <a
         href="#main-content"
-        className="fixed top-3 left-3 z-[100] -translate-y-20 rounded-md bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition-transform focus:translate-y-0"
+        className="fixed top-3 left-3 z-[100] -translate-y-20 rounded-full bg-primary px-4 py-3 text-sm font-medium text-primary-foreground transition-transform focus:translate-y-0"
       >
         Skip to content
       </a>
-      <div className="site-frame flex min-h-20 flex-wrap items-center justify-between gap-x-6 py-3 md:flex-nowrap md:py-0">
+      <div className="site-frame flex h-[3.75rem] items-center justify-between gap-6">
         <Link
           href="/"
           translate="no"
           aria-label="nohint404 home"
-          className="flex min-h-11 items-center gap-2 font-mono text-xs tracking-[0.13em] uppercase"
+          className="flex min-h-11 items-center gap-3 rounded-full px-2"
         >
-          <span aria-hidden="true" className="size-2 bg-signal" />
-          nohint404
+          <span className="relative size-7 overflow-hidden rounded-full bg-card ring-1 ring-border">
+            <Image
+              src="https://avatars.githubusercontent.com/u/238106931?v=4"
+              alt=""
+              width={28}
+              height={28}
+              className="size-7 object-cover"
+              priority
+              unoptimized
+            />
+          </span>
+          <span className="text-[15px] font-semibold tracking-[-0.015em]">nohint404</span>
         </Link>
 
-        <div className="md:order-3">
-          <CommandPalette />
+        <div className="flex items-center gap-1">
+          <nav aria-label="Primary navigation" className="hidden items-center gap-1 sm:flex">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="rounded-full px-3.5 py-2 text-[14px] font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+          <div className="ml-1">
+            <CommandPalette />
+          </div>
         </div>
-
-        <nav
-          aria-label="Primary navigation"
-          className="order-3 flex w-full items-center justify-between border-t border-border pt-2 md:order-2 md:w-auto md:justify-start md:border-0 md:pt-0"
-        >
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="flex min-h-11 items-center px-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
       </div>
+      <nav aria-label="Primary navigation mobile" className="flex items-center gap-1 border-t border-border px-2 py-2 sm:hidden">
+        {links.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className="flex h-11 flex-1 items-center justify-center rounded-full bg-secondary text-center text-sm font-medium text-muted-foreground"
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
     </header>
   );
 }
