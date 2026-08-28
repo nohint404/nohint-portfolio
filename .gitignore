@@ -1,0 +1,20 @@
+# Dependencies and build output
+/node_modules
+/.next
+/out
+/coverage
+
+# Environment and deployment
+.env*
+!.env.example
+.vercel
+
+# Test artifacts
+/playwright-report
+/test-results
+
+# Editors and OS
+.DS_Store
+*.swp
+
+*.harness

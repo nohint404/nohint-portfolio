@@ -1,0 +1,192 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: var(--type-display);
+  --font-sans: var(--type-sans);
+  --font-mono: var(--type-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-subtle: var(--subtle);
+  --color-surface: var(--surface);
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 0.75rem;
+}
+
+:root {
+  color-scheme: dark;
+  --background: #080806;
+  --foreground: #f2efe8;
+  --card: #0e0e0b;
+  --card-foreground: #f2efe8;
+  --popover: #0d0d0a;
+  --popover-foreground: #f2efe8;
+  --primary: #e2a24a;
+  --primary-foreground: #0a0906;
+  --secondary: #181712;
+  --secondary-foreground: #e7e3db;
+  --muted: #15140f;
+  --muted-foreground: #a39f95;
+  --accent: #201a10;
+  --accent-foreground: #f3bd72;
+  --destructive: #e26d5a;
+  --border: rgb(242 239 232 / 0.12);
+  --input: rgb(242 239 232 / 0.16);
+  --ring: #e2a24a;
+  --signal: #e2a24a;
+  --signal-soft: #f3bd72;
+  --subtle: #77736b;
+  --surface: #11110e;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+
+  html {
+    min-width: 320px;
+    scroll-behavior: smooth;
+    background: var(--background);
+  }
+
+  body {
+    min-width: 320px;
+    margin: 0;
+    overflow-x: clip;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), sans-serif;
+    text-rendering: optimizeLegibility;
+  }
+
+  a,
+  button,
+  input {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  a {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 4px;
+  }
+
+  ::selection {
+    background: var(--signal);
+    color: #080806;
+  }
+}
+
+@layer components {
+  .site-frame {
+    width: min(100% - 2rem, 80rem);
+    margin-inline: auto;
+  }
+
+  .section-rule {
+    border-top: 1px solid var(--border);
+  }
+
+  .instrument-label {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.6875rem;
+    line-height: 1.4;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  .balanced-heading {
+    text-wrap: balance;
+  }
+
+  .signal-surface {
+    position: relative;
+    isolation: isolate;
+    background-color: var(--card);
+    background-image:
+      linear-gradient(rgb(242 239 232 / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(242 239 232 / 0.035) 1px, transparent 1px);
+    background-size: 2rem 2rem;
+  }
+
+  .signal-surface::after {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    border: 1px solid rgb(242 239 232 / 0.08);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  .link-line {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--foreground);
+    transition: color 180ms ease-out;
+  }
+
+  .link-line:hover {
+    color: var(--signal-soft);
+  }
+}
+
+@media (min-width: 48rem) {
+  .site-frame {
+    width: min(100% - 4rem, 80rem);
+  }
+}
+
+@media (min-width: 80rem) {
+  .site-frame {
+    width: min(100% - 6rem, 80rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
