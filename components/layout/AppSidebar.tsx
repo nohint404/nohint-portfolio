@@ -14,7 +14,7 @@ const nav = [
   { n: "04", label: "Contact", href: "/#contact" },
 ] as const;
 
-export function VanHoltzSidebar() {
+export function AppSidebar() {
   const [open, setOpen] = useState(true);
 
   return (

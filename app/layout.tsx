@@ -6,7 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { VanHoltzSidebar } from "@/components/layout/VanHoltzSidebar";
+import { AppSidebar } from "@/components/layout/AppSidebar";
 
 const display = localFont({
   src: [
@@ -80,15 +80,15 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable} font-sans`}>
       <body>
         <template
-          data-design-contract="vanholtz-apple-02"
+          data-design-contract="apple-product-03"
           dangerouslySetInnerHTML={{
             __html:
-              "<!-- THESIS: portfolio as Apple product + Van Holtz editorial — refined, animated, whitespace-driven, projects hyphenated left. OWN-WORLD: OLED #080808/#111111/#F5F5F7/#A1A1A6, Geist, 2px geometric, clipPath, sidebar editorial + product device, staggered fade in/out. STORY: meet nohint404 via sidebar, hero product device centered, work detached geometric, stack marquee with real SVG logos + GitHub, contact via GitHub. FIRST VIEWPORT: centered hero h1 nohint404 Portfolio built like a product + device 980px, sidebar editorial left. FORM: Apple product + Van Holtz editorial, Experience mode, vanholtz-apple-02. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance -->",
+              "<!-- THESIS: portfolio as premium Apple product — refined, animated, whitespace-driven, geometric detached. OWN-WORLD: OLED #080808/#111111/#F5F5F7/#A1A1A6, Geist, 2px geometric, clipPath, sidebar editorial + product device, staggered fade in/out. STORY: meet nohint404 via sidebar, hero product device centered, work detached geometric, stack marquee with real SVG logos + GitHub, contact via GitHub. FIRST VIEWPORT: centered hero h1 nohint404 Portfolio built like a product + device 980px, sidebar left. FORM: Apple product, Experience mode, apple-product-03. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance -->",
           }}
         />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
         <div className="flex min-h-screen">
-          <VanHoltzSidebar />
+          <AppSidebar />
           <div className="flex min-w-0 flex-1 flex-col">
             <SiteHeader />
             <div className="flex-1">{children}</div>
