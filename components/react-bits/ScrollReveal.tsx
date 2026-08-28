@@ -20,7 +20,7 @@ export function ScrollReveal({ text, className }: { text: string; className?: st
         trigger: ref.current,
         start: "top 82%",
         once: true,
-        onEnter: () => gsap.fromTo(spans, { filter: "blur(5px)", y: 10 }, { filter: "blur(0px)", y: 0, stagger: 0.045, ease: "power3.out" }),
+        onEnter: () => gsap.to(spans, { color: "var(--foreground)", stagger: 0.035, duration: 0.48, ease: "power3.out" }),
       });
     }, ref);
     return () => context.revert();

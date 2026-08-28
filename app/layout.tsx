@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 
 const display = localFont({
@@ -66,8 +67,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "light",
-  themeColor: "#f4f0e8",
+  colorScheme: "dark",
+  themeColor: "#050507",
   width: "device-width",
   initialScale: 1,
 };
@@ -80,11 +81,11 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           data-design-contract="typographic-specimen-01"
           dangerouslySetInnerHTML={{
             __html:
-              "<!-- THESIS: an inspectable developer archive typesets real work as a living specimen, refusing the dashboard portfolio. OWN-WORLD: warm paper, carbon ink, cobalt registration marks, Barlow Condensed and Geist, fine rules and type-scale contrast. STORY: visitors encounter nohint404 through work they can open, inspect and verify. FIRST VIEWPORT: oversized responsive nohint404 lettering fills a paper field; project and GitHub actions sit below its baseline. FORM: typographic specimen, Experience mode, typographic-specimen-01. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance -->",
+              "<!-- THESIS: an inspectable developer archive presents real work as a high-contrast OLED signal field. OWN-WORLD: near-black depth, cobalt and violet luminance, machined glass surfaces, Geist and Barlow Condensed, and physical motion that responds without obscuring content. STORY: visitors encounter nohint404 through repositories they can open, inspect and verify. FIRST VIEWPORT: a calm wordmark holds against an animated signal grid; projects emerge as illuminated records. FORM: OLED bento archive, Experience mode, oled-signal-02. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance -->",
           }}
         />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
-        {children}
+        <TooltipProvider>{children}</TooltipProvider>
         <Analytics />
         <SpeedInsights />
       </body>
