@@ -28,7 +28,7 @@ test.describe("portfolio shell", () => {
       }
     });
 
-    await page.goto("/");
+    await page.goto("/en");
 
     await expect(page).toHaveTitle(/nohint404/);
     await expect(page.getByRole("heading", { level: 1, name: /nohint404/i })).toBeVisible();
@@ -39,7 +39,7 @@ test.describe("portfolio shell", () => {
   });
 
   test("opens, filters, closes, and restores focus for the command palette", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/en");
     const trigger = page.getByRole("button", { name: "Open command palette" });
 
     await trigger.focus();
@@ -56,16 +56,16 @@ test.describe("portfolio shell", () => {
   });
 
   test("navigates to Labs and renders the honest empty state", async ({ page }) => {
-    await page.goto("/");
-    await page.getByRole("link", { name: "Labs", exact: true }).first().click();
+    await page.goto("/en");
+    await page.locator('a[href="/en/labs"]').first().click();
 
-    await expect(page).toHaveURL(/\/labs$/);
-    await expect(page.getByRole("heading", { level: 1, name: /Quiet for now/i })).toBeVisible();
+    await expect(page).toHaveURL(/\/en\/labs$/);
+    await expect(page.getByRole("heading", { level: 1, name: /Quiet, for now/i })).toBeVisible();
     await expect(page.getByText("No experiments published", { exact: true })).toBeVisible();
   });
 
   test("renders a useful branded 404", async ({ page }) => {
-    const response = await page.goto("/missing-route");
+    const response = await page.goto("/en/missing-route");
 
     expect(response?.status()).toBe(404);
     await expect(page.getByRole("heading", { level: 1, name: "404" })).toBeVisible();
@@ -74,20 +74,20 @@ test.describe("portfolio shell", () => {
 
   test("does not overflow at a narrow viewport", async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 720 });
-    await page.goto("/");
+    await page.goto("/en");
 
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBeLessThanOrEqual(1);
   });
 
   test("passes automated accessibility checks on core routes and the dialog", async ({ page }) => {
-    for (const route of ["/", "/labs", "/missing-route"]) {
+    for (const route of ["/en", "/en/labs", "/en/missing-route", "/it"]) {
       await page.goto(route);
       const results = await new AxeBuilder({ page }).analyze();
       expect(results.violations, `axe violations on ${route}`).toEqual([]);
     }
 
-    await page.goto("/");
+    await page.goto("/en");
     await page.getByRole("button", { name: "Open command palette" }).click();
     const dialogResults = await new AxeBuilder({ page }).include('[role="dialog"]').analyze();
     expect(dialogResults.violations, "axe violations in command palette").toEqual([]);
@@ -98,7 +98,7 @@ test.describe("portfolio shell", () => {
 
     for (const [width, height] of responsiveViewports) {
       await page.setViewportSize({ width, height });
-      await page.goto("/");
+      await page.goto("/en");
       const overflow = await page.evaluate(
         () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
       );
@@ -110,7 +110,7 @@ test.describe("portfolio shell", () => {
   test("keeps visible touch targets at least 44 pixels", async ({ page, browserName }) => {
     test.skip(browserName !== "chromium", "Touch-target geometry runs once in Chromium.");
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto("/");
+    await page.goto("/en");
 
     const undersized = await page.locator("a, button").evaluateAll((elements) =>
       elements.flatMap((element) => {
@@ -147,12 +147,12 @@ test.describe("portfolio shell", () => {
       isMobile: true,
     });
     const touchPage = await context.newPage();
-    await touchPage.goto("/");
+    await touchPage.goto("/en");
     await touchPage.getByRole("button", { name: "Open command palette" }).tap();
     await expect(touchPage.getByRole("dialog")).toBeVisible();
     await touchPage.getByPlaceholder("Type a destination…").fill("labs");
     await touchPage.getByRole("option", { name: /Labs/ }).tap();
-    await expect(touchPage).toHaveURL(/\/labs$/);
+    await expect(touchPage).toHaveURL(/\/en\/labs$/);
 
     await touchPage.setViewportSize({ width: 1180, height: 820 });
     const overflow = await touchPage.evaluate(

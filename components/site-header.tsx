@@ -1,75 +1,56 @@
-import Image from "next/image";
+"use client";
+
 import Link from "next/link";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
 import { CommandPalette } from "@/components/command-palette";
+import { LocaleSwitcher } from "@/components/locale-switcher";
+import type { Copy, Locale } from "@/lib/i18n";
 
-const links = [
-  { label: "Work", href: "/#work" },
-  { label: "Labs", href: "/labs" },
-  { label: "Contact", href: "/#contact" },
-] as const;
-
-export function SiteHeader() {
+export function SiteHeader({ locale, content }: { locale: Locale; content: Copy }) {
+  const [open, setOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const links = [
+    { label: content.nav.work, href: `/${locale}/#work` },
+    { label: content.nav.stack, href: `/${locale}/#stack` },
+    { label: content.nav.about, href: `/${locale}/#about` },
+    { label: content.nav.labs, href: `/${locale}/labs` },
+  ];
   return (
-    <header className="sticky top-0 z-40 border-b border-transparent bg-background/70 apple-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="site-header">
       <a
         href="#main-content"
-        className="fixed top-3 left-3 z-[100] -translate-y-20 bg-primary px-4 py-3 text-sm font-medium text-primary-foreground transition-transform focus:translate-y-0"
-        style={{ borderRadius: "2px" }}
+        className="skip-link"
       >
         Skip to content
       </a>
-      <div className="site-frame flex h-[3.75rem] items-center justify-between gap-6">
+      <div className="site-header__island">
         <Link
-          href="/"
+          href={`/${locale}`}
           translate="no"
           aria-label="nohint404 home"
-          className="flex min-h-11 items-center gap-3 px-2"
-          style={{ borderRadius: "2px" }}
+          className="site-wordmark"
         >
-          <span className="relative size-7 overflow-hidden bg-card ring-1 ring-border" style={{ borderRadius: "2px" }}>
-            <Image
-              src="https://avatars.githubusercontent.com/u/238106931?v=4"
-              alt=""
-              width={28}
-              height={28}
-              className="size-7 object-cover"
-              priority
-              unoptimized
-            />
-          </span>
-          <span className="text-[15px] font-semibold tracking-[-0.015em]">nohint404</span>
+          nohint404<span aria-hidden="true">.</span>
         </Link>
-
-        <div className="flex items-center gap-1">
-          <nav aria-label="Primary navigation" className="hidden items-center gap-1 sm:flex lg:hidden">
+        <nav aria-label="Primary navigation" className="site-header__nav">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="px-3.5 py-2 text-[14px] font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-                style={{ borderRadius: "2px" }}
+                className="site-header__link"
               >
                 {link.label}
               </a>
             ))}
-          </nav>
-          <div className="ml-1">
-            <CommandPalette />
-          </div>
-        </div>
+        </nav>
+        <div className="site-header__tools"><LocaleSwitcher locale={locale} /><CommandPalette locale={locale} content={content.command} /><button type="button" className="menu-button" aria-expanded={open} aria-controls="site-menu" onClick={() => setOpen((value) => !value)}>{open ? content.nav.close : content.nav.menu}</button></div>
       </div>
-      <nav aria-label="Primary navigation mobile" className="flex items-center gap-1 border-t border-border px-2 py-2 sm:hidden">
-        {links.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            className="flex h-11 flex-1 items-center justify-center bg-secondary text-center text-sm font-medium text-muted-foreground"
-            style={{ borderRadius: "2px" }}
-          >
-            {link.label}
-          </a>
-        ))}
-      </nav>
+      <AnimatePresence>
+        {open && <motion.div id="site-menu" initial={reduceMotion ? false : { opacity: 0, clipPath: "inset(0 0 100% 0 round 1.5rem)" }} animate={{ opacity: 1, clipPath: "inset(0 0 0% 0 round 1.5rem)" }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, clipPath: "inset(0 0 100% 0 round 1.5rem)" }} transition={{ type: "spring", bounce: 0, duration: 0.42 }} className="menu-sheet">
+          <nav aria-label="Expanded navigation">{links.map((link, index) => <motion.a key={link.href} href={link.href} onClick={() => setOpen(false)} initial={reduceMotion ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 + index * 0.05, duration: 0.38 }} className="menu-sheet__link">{link.label}<span aria-hidden="true">↘</span></motion.a>)}</nav>
+        </motion.div>}
+      </AnimatePresence>
     </header>
   );
 }

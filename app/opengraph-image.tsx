@@ -15,21 +15,21 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px",
-          background: "#080806",
-          color: "#f2efe8",
-          border: "1px solid rgba(242,239,232,.16)",
+          background: "#f4f0e8",
+          color: "#171817",
+          border: "1px solid #171817",
           fontFamily: "sans-serif",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "16px", fontSize: 22, letterSpacing: ".12em" }}>
-          <div style={{ width: 12, height: 12, background: "#e2a24a" }} />
-          NOHINT404 / BUILD SIGNAL
+          <div style={{ width: 12, height: 12, background: "#2d5bff" }} />
+          NOHINT404 / PERSONAL ARCHIVE
         </div>
         <div style={{ display: "flex", flexDirection: "column", fontSize: 94, lineHeight: 0.95, letterSpacing: "-.05em", fontWeight: 700 }}>
-          <span>Engineering,</span>
-          <span style={{ color: "#e2a24a" }}>without the guesswork.</span>
+          <span>Work you can</span>
+          <span style={{ color: "#2d5bff" }}>inspect.</span>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 20, color: "#a39f95" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 20, color: "#6f706a" }}>
           <span>VERIFIED WORK · INSPECTABLE SOURCE</span>
           <span>NOHINT.DEV</span>
         </div>

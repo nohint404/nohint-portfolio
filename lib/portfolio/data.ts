@@ -1,6 +1,7 @@
 import "server-only";
 
 import { getRepositoryMetrics } from "@/lib/github/cache";
+import type { Locale } from "@/lib/i18n";
 import type { Portfolio, Project } from "./types";
 
 const curatedProjects: readonly Project[] = [
@@ -85,18 +86,35 @@ export function orderProjects(projects: readonly Project[]): Project[] {
   );
 }
 
-export async function getPortfolio(): Promise<Portfolio> {
+const italianProjectCopy: Record<string, Pick<Project, "summary" | "narrative">> = {
+  "nohint-portfolio": {
+    summary: "Portfolio personale — questo sito.",
+    narrative: "Un portfolio essenziale costruito con Next.js e TypeScript, focalizzato su progetti, performance e accessibilità.",
+  },
+  orvex: { summary: "Progetto Rust — codice disponibile su GitHub.", narrative: "Un’esplorazione in Rust. Repository su GitHub." },
+  "banana-space": { summary: "Progetto Wolfram Language — codice su GitHub.", narrative: "Un’esplorazione in Wolfram Language. Repository su GitHub." },
+  "vscode-debloter": { summary: "Tool Python per una configurazione VS Code più pulita.", narrative: "Utility Python per semplificare Visual Studio Code. Codice su GitHub." },
+  "cdn-frontend": { summary: "Frontend per CDN — TypeScript.", narrative: "Un frontend TypeScript per workflow CDN, distribuito su Vercel." },
+};
+
+export async function getPortfolio(locale: Locale = "en"): Promise<Portfolio> {
   const projects = await Promise.all(
     orderProjects(curatedProjects).map(async (project) => {
       const result = await getRepositoryMetrics(project.repository.owner, project.repository.name);
-      return { ...project, metrics: result.ok ? result.data : result.fallback };
+      const translation = locale === "it" ? italianProjectCopy[project.slug] : undefined;
+      return { ...project, ...translation, metrics: result.ok ? result.data : result.fallback };
     }),
   );
 
   return {
     projects,
     experiments: [],
-    capabilities: [
+    capabilities: locale === "it" ? [
+      { name: "Linguaggi", description: "TypeScript · JavaScript · Rust · Python · Wolfram · Lua · CSS" },
+      { name: "Frontend", description: "Next.js · React · Tailwind CSS" },
+      { name: "Backend e sistemi", description: "Node.js · Tooling Rust · Script Python" },
+      { name: "Tooling", description: "Git · GitHub · Vercel · VS Code" },
+    ] : [
       { name: "Languages", description: "TypeScript · JavaScript · Rust · Python · Wolfram · Lua · CSS" },
       { name: "Frontend", description: "Next.js · React · Tailwind CSS" },
       { name: "Backend & systems", description: "Node.js · Rust tooling · Python scripts" },

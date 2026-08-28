@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import type { Copy, Locale } from "@/lib/i18n";
 import {
   Command,
   CommandDialog,
@@ -14,23 +15,16 @@ import {
   CommandShortcut,
 } from "@/components/ui/command";
 
-const commands = [
-  { label: "Home", hint: "Identity and overview", href: "/", shortcut: "H" },
-  { label: "Selected work", hint: "Inspect the featured build", href: "/#work", shortcut: "W" },
-  { label: "Labs", hint: "Experiments and field notes", href: "/labs", shortcut: "L" },
-  {
-    label: "GitHub",
-    hint: "Open the source profile",
-    href: "https://github.com/nohint404",
-    shortcut: "G",
-    external: true,
-  },
-] as const;
-
-export function CommandPalette() {
+export function CommandPalette({ locale, content }: { locale: Locale; content: Copy["command"] }) {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
+  const commands = [
+    { label: "Home", hint: "nohint404", href: `/${locale}`, shortcut: "H" },
+    { label: locale === "it" ? "Progetti" : "Selected work", hint: locale === "it" ? "Apri l’archivio" : "Inspect the archive", href: `/${locale}/#work`, shortcut: "W" },
+    { label: locale === "it" ? "Lab" : "Labs", hint: locale === "it" ? "Esperimenti e note" : "Experiments and notes", href: `/${locale}/labs`, shortcut: "L" },
+    { label: "GitHub", hint: locale === "it" ? "Apri il profilo" : "Open source profile", href: "https://github.com/nohint404", shortcut: "G", external: true },
+  ] as const;
 
   const updateOpen = useCallback((nextOpen: boolean) => {
     setOpen(nextOpen);
@@ -71,12 +65,11 @@ export function CommandPalette() {
         type="button"
         variant="secondary"
         size="sm"
-        aria-label="Open command palette"
+        aria-label={content.open}
         aria-haspopup="dialog"
         aria-expanded={open}
         onClick={() => updateOpen(true)}
-        className="bg-secondary text-muted-foreground hover:bg-[#232326] hover:text-foreground"
-        style={{ borderRadius: "2px" }}
+        className="command-button"
       >
         <span aria-hidden="true" className="text-[13px]">
           ⌘
@@ -86,14 +79,14 @@ export function CommandPalette() {
       <CommandDialog
         open={open}
         onOpenChange={updateOpen}
-        title="Navigate nohint404"
-        description="Search pages and source links"
-        className="sm:max-w-xl"
+        title={content.title}
+        description={content.description}
+        className="sm:max-w-xl data-open:animate-none data-closed:animate-none"
       >
-        <Command label="Site navigation">
-          <CommandInput placeholder="Type a destination…" />
+        <Command label="Site navigation" className="command-palette">
+          <CommandInput placeholder={content.placeholder} />
           <CommandList>
-            <CommandEmpty>No matching destination.</CommandEmpty>
+            <CommandEmpty>{content.empty}</CommandEmpty>
             <CommandGroup heading="Navigate">
               {commands.map((command, index) => (
                 <CommandItem
@@ -101,12 +94,12 @@ export function CommandPalette() {
                   value={`${command.label} ${command.hint}`}
                   onSelect={() => selectCommand(command.href, "external" in command)}
                 >
-                  <span aria-hidden="true" className="font-mono text-[0.6875rem] text-foreground">
+                  <span aria-hidden="true" className="font-mono text-[0.6875rem] text-foreground group-data-selected/command-item:text-accent-foreground">
                     0{index + 1}
                   </span>
                   <span className="flex min-w-0 flex-col gap-0.5">
                     <span>{command.label}</span>
-                    <span className="truncate text-xs text-muted-foreground" style={{ color: "#c2c2c6" }}>
+                    <span className="truncate text-xs text-muted-foreground group-data-selected/command-item:text-accent-foreground">
                       {command.hint}
                     </span>
                   </span>
