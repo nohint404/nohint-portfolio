@@ -5,6 +5,8 @@ import { HeroProduct } from "@/components/hero/HeroProduct";
 import { WorkSection } from "@/components/work/WorkSection";
 import { LangCarousel } from "@/components/stack/LangCarousel";
 import { Reveal } from "@/components/ui/Reveal";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { GithubMark } from "@/components/icons/GithubMark";
 
 export default async function HomePage() {
   const portfolio = await getPortfolio();
@@ -29,14 +31,14 @@ export default async function HomePage() {
             </div>
             <div className="col-span-12 lg:col-span-6 lg:col-start-7 grid gap-4 sm:grid-cols-2">
               {portfolio.capabilities.map((c, i) => (
-                <div
+                <SpotlightCard
                   key={c.name}
                   className="bg-card p-5 ring-1 ring-border"
-                  style={{ borderRadius: "2px", transform: `translateX(${i % 2 === 0 ? "4px" : "-4px"})` }}
+                  style={{ borderRadius: "2px", transform: `translateX(${i % 2 === 0 ? "4px" : "-4px"})` } as React.CSSProperties}
                 >
                   <h3 className="text-sm font-semibold">{c.name}</h3>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">{c.description}</p>
-                </div>
+                </SpotlightCard>
               ))}
             </div>
           </div>
@@ -83,10 +85,11 @@ export default async function HomePage() {
               href="https://github.com/nohint404"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-11 items-center justify-center bg-primary px-6 text-sm font-medium text-primary-foreground"
+              className="inline-flex min-h-11 items-center justify-center gap-2 bg-primary px-6 text-sm font-medium text-primary-foreground"
               style={{ borderRadius: "2px" }}
             >
-              GitHub — nohint404 <span aria-hidden="true" className="ml-2">↗</span>
+              <GithubMark className="size-4" />
+              GitHub — nohint404
             </a>
             <Link
               href="/labs"

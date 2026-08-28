@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { GithubMark } from "@/components/icons/GithubMark";
+import { CountUp } from "@/components/ui/CountUp";
 
 export function HeroProduct() {
   const ref = useRef<HTMLDivElement>(null);
@@ -61,11 +63,26 @@ export function HeroProduct() {
             href="https://github.com/nohint404"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex min-h-11 items-center justify-center border border-border bg-secondary px-7 text-[15px] font-medium hover:bg-[#232326]"
+            className="inline-flex min-h-11 items-center justify-center gap-2 border border-border bg-secondary px-7 text-[15px] font-medium hover:bg-[#232326]"
             style={{ borderRadius: "2px" }}
           >
+            <GithubMark className="size-4" />
             GitHub
           </a>
+        </motion.div>
+        <motion.div
+          variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { delay: 0.4, duration: 0.6 } } }}
+          className="mx-auto mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-muted-foreground"
+        >
+          <span>
+            <CountUp to={5} className="font-semibold text-foreground" /> projects
+          </span>
+          <span className="size-1 bg-white/20" style={{ borderRadius: "1px" }} aria-hidden="true" />
+          <span>
+            <CountUp to={9} className="font-semibold text-foreground" /> languages
+          </span>
+          <span className="size-1 bg-white/20" style={{ borderRadius: "1px" }} aria-hidden="true" />
+          <span>GitHub — nohint404</span>
         </motion.div>
       </motion.div>
 

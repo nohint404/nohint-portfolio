@@ -41,7 +41,7 @@ export function SiteHeader() {
         </Link>
 
         <div className="flex items-center gap-1">
-          <nav aria-label="Primary navigation" className="hidden items-center gap-1 sm:flex">
+          <nav aria-label="Primary navigation" className="hidden items-center gap-1 sm:flex lg:hidden">
             {links.map((link) => (
               <a
                 key={link.href}

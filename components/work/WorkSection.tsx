@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { Project } from "@/lib/portfolio/types";
+import { GithubMark } from "@/components/icons/GithubMark";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -73,9 +74,10 @@ export function WorkSection({ featured, rest }: { featured: Project[]; rest: Pro
                     href={project.links.source}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center bg-primary px-5 text-sm font-medium text-primary-foreground"
+                    className="inline-flex min-h-11 items-center justify-center gap-2 bg-primary px-5 text-sm font-medium text-primary-foreground"
                     style={{ borderRadius: "2px" }}
                   >
+                    <GithubMark className="size-4" />
                     GitHub
                   </a>
                   {project.links.live && (
@@ -141,8 +143,9 @@ export function WorkSection({ featured, rest }: { featured: Project[]; rest: Pro
                 </span>
               </div>
               <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground">{project.summary}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-muted-foreground group-hover:text-foreground">
-                Source <span aria-hidden="true">↗</span>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground group-hover:text-foreground">
+                <GithubMark className="size-3.5" />
+                Source
               </span>
             </motion.a>
           ))}

@@ -1,15 +1,18 @@
 "use client";
 
+import Image from "next/image";
+
 const languages = [
-  { name: "TypeScript", short: "TS" },
-  { name: "JavaScript", short: "JS" },
-  { name: "Rust", short: "RS" },
-  { name: "Python", short: "PY" },
-  { name: "Wolfram", short: "WL" },
-  { name: "Lua", short: "LU" },
-  { name: "CSS", short: "CSS" },
-  { name: "Next.js", short: "NX" },
-  { name: "React", short: "RCT" },
+  { name: "TypeScript", icon: "/icons/typescript.svg" },
+  { name: "JavaScript", icon: "/icons/javascript.svg" },
+  { name: "Rust", icon: "/icons/rust.svg" },
+  { name: "Python", icon: "/icons/python.svg" },
+  { name: "GitHub", icon: "/icons/github.svg" },
+  { name: "Wolfram", icon: "/icons/wolfram.svg" },
+  { name: "Lua", icon: "/icons/lua.svg" },
+  { name: "CSS", icon: "/icons/css.svg" },
+  { name: "Next.js", icon: "/icons/nextjs.svg" },
+  { name: "React", icon: "/icons/react.svg" },
 ];
 
 export function LangCarousel() {
@@ -24,8 +27,8 @@ export function LangCarousel() {
             key={`${lang.name}-${i}`}
             className="flex shrink-0 items-center gap-3 border-r border-border px-6 py-4"
           >
-            <span className="grid size-8 place-items-center bg-secondary font-mono text-[11px] font-semibold tracking-wide text-foreground ring-1 ring-border" style={{ borderRadius: "2px" }}>
-              {lang.short}
+            <span className="relative grid size-8 place-items-center overflow-hidden bg-secondary ring-1 ring-border" style={{ borderRadius: "2px" }}>
+              <Image src={lang.icon} alt="" width={32} height={32} className="size-8 object-cover" unoptimized />
             </span>
             <span className="whitespace-nowrap text-sm font-medium tracking-[-0.01em]">{lang.name}</span>
             <span className="ml-2 hidden text-xs text-muted-foreground sm:inline">·</span>
