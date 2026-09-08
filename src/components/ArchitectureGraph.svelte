@@ -25,4 +25,5 @@
   </div>
   <div class="node-inspector" aria-live="polite"><span class="path">❯ inspect {selected}</span><h4>{node?.label}</h4><p>{node?.detail}</p>{#if contributions}{#if evidence.length}<ul>{#each evidence as item}<li><a href={item.source}>{item.title} ↗</a><p>{item.text}</p></li>{/each}</ul>{:else}<p class="quiet">Project context. No personal contribution highlighted for this area.</p>{/if}{/if}</div>
   <p class="caveat">A simplified source map, not a running recorder. Media files hold video; SQLite holds catalog metadata and settings. Select any area to inspect it.</p>
+<noscript><div>{#each project.architecture ?? [] as item}<details><summary>{item.label}</summary><p>{item.detail}</p></details>{/each}</div></noscript>
 </figure>

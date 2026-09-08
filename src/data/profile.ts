@@ -9,6 +9,7 @@ export const profile = {
 };
 export const navigation = [
   { name: 'Work', href: '/#work' },
+  { name: 'Lab', href: '/#lab' },
   { name: 'About', href: '/#about' },
   { name: 'Contact', href: '/#contact' },
 ];

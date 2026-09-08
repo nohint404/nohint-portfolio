@@ -1,4 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import DrawnLine from '../components/motion/DrawnLine.astro';
 ---
-<Layout title="Page not found — nohint404" description="This path does not exist. Return to the portfolio or explore the selected work."><section class="shell not-found"><p class="path">cd: no such route / 404</p><h1>No file<br />at this path.</h1><p>The page may have moved, or the address may be mistyped.</p><div class="case-end"><a class="text-link" href="/">Back home</a><a class="text-link" href="/#work">Explore the work</a></div></section></Layout>
+<Layout title="Page not found — nohint404" description="This path does not exist. Return to the portfolio or explore the selected work."><section class="shell not-found"><h1>Well.<br />That’s a 404.</h1><DrawnLine /><p>This piece isn’t on the workbench. The address may be mistyped, or the page may have moved.</p><details><summary>Look under the table?</summary><p>Nope. But the projects are still right here.</p><a href="/#work">Open the selected work</a></details><div class="case-end"><a class="primary-link" href="/">Back to the workbench</a><a class="text-link" href="/#contact">Contact me</a></div></section></Layout>

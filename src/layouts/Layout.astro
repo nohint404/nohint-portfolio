@@ -1,6 +1,5 @@
 ---
-import '@fontsource-variable/instrument-sans';
-import font from '@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2?url';
+import font from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url';
 import '../styles/global.css';
 import GlobalNav from '../components/GlobalNav.astro';
 import { profile } from '../data/profile';
@@ -13,7 +12,8 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefin
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>{title}</title><meta name="description" content={description} /><meta name="theme-color" content="#17191B" />
+  <title>{title}</title><meta name="description" content={description} /><meta name="theme-color" content="#FAF8F0" />
+  <style>@font-face{font-family:"Bricolage Grotesque Variable";font-style:normal;font-weight:200 800;font-display:swap;src:url(@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");}</style>
   <link rel="preload" href={font} as="font" type="font/woff2" crossorigin />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   {canonical && <link rel="canonical" href={canonical} />}
@@ -26,55 +26,7 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefin
 <a class="skip" href="#main">Skip to content</a>
 <GlobalNav />
 <main id="main"><slot /></main>
-<footer class="shell footer"><a class="identity" href="/">nohint404</a><p>Astro + Svelte + TypeScript + Bun / ~/end / no warranty, obviously.</p><a href={profile.github}>GitHub</a></footer>
-<script>
-  try {
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const route = location.pathname.replace(/\/$/, '') || '/';
-    if (!reduce) {
-      const home = route === '/';
-      const lines = home ? ['~ ❯ bun install', '✓ lockfile — workspace ready', '~ ❯ bun run build', '├ src/pages/index.astro', '├ src/pages/work/[slug].astro', '├ src/layouts/Layout.astro', '├ src/components/CommandPalette.svelte', '├ src/components/ArchitectureGraph.svelte', '✓ 5 routes prerendered', '✓ static — ready'] : [`~ ❯ cd ~${route}`, '✓ ready'];
-      const boot = document.createElement('div');
-      boot.className = 'boot';
-      boot.setAttribute('aria-hidden', 'true');
-      if (home) {
-        const name = document.createElement('p');
-        name.className = 'boot-name';
-        name.textContent = 'nohint404';
-        boot.appendChild(name);
-      }
-      const shell = document.createElement('div');
-      shell.className = 'boot-shell';
-      const head = document.createElement('div');
-      head.className = 'boot-head';
-      head.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="t">nohint — bun</span>';
-      const body = document.createElement('div');
-      body.className = 'boot-body';
-      lines.forEach((text) => {
-        const p = document.createElement('p');
-        if (text[0] === '✓') p.className = 'boot-ok';
-        p.textContent = text;
-        body.appendChild(p);
-      });
-      const bar = document.createElement('div');
-      bar.className = 'boot-bar';
-      bar.setAttribute('aria-hidden', 'true');
-      body.appendChild(bar);
-      shell.appendChild(head);
-      shell.appendChild(body);
-      boot.appendChild(shell);
-      document.body.appendChild(boot);
-      const step = 170;
-      const items = Array.from(boot.querySelectorAll('p, .boot-bar'));
-      items.forEach((line, i) => {
-        const wipe = line.classList.contains('boot-name');
-        line.animate(wipe ? [{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0 0 0)'}] : [{opacity:0},{opacity:1}],{duration:wipe?280:120,delay:i*step,fill:'backwards',easing:'ease-out'});
-      });
-      bar.animate([{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{duration:(items.length-1)*step,fill:'backwards',easing:'linear'});
-      boot.animate([{opacity:1},{opacity:0}],{duration:300,delay:(items.length-1)*step+160,fill:'forwards',easing:'ease-out'}).finished.finally(() => boot.remove());
-    }
-    sessionStorage.setItem('portfolio-visited', '1');
-  } catch { /* Content is already rendered; the boot is decorative. */ }
-</script>
+<footer class="shell footer"><a class="identity" href="/">nohint404</a><p>Built to be taken apart. Astro, Svelte & Bun.</p><a href={profile.github}>GitHub</a></footer>
+
 </body>
 </html>

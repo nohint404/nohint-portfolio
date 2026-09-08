@@ -1,3 +1,5 @@
+> Historical record: superseded by the light workbench redesign. Current source, DESIGN.md, redesign-direction.md and redesign-validation.md take precedence. Old checks and contact/stack statements are not current evidence.
+
 # Command → structure
 
 Identity: nohint404; developer tooling and web interfaces. Two projects, curated from public code, not an invented career.

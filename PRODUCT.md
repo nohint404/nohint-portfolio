@@ -1,23 +1,18 @@
 # Product
 <!-- impeccable:product-schema 1 -->
-
 ## Platform
 web
-
 ## Users
-Developers, recruiters, technical founders, collaborators and potential clients evaluating nohint404's actual work.
-
+Developers, recruiters and collaborators evaluating nohint404's public work.
 ## Product Purpose
-A personal portfolio that invites exploration and makes visitors want to contact its developer. The user explicitly requested a complete playful Linux-inspired presentation revamp, preserving working infrastructure, without phase approval stops.
-
+A memorable, playful workbench that makes actual projects inspectable and contact immediate.
 ## Capabilities and Constraints
-Astro static pages, selective Svelte islands, TypeScript and Bun only. Home, work, addressable project details, about, contact and useful 404. Public GitHub evidence governs claims. vs-notrack is owned work; Portfolio is earlier owned work; Monolith belongs to fraa2a and nohint404 is a contributor. No fabricated projects, metrics, career, screenshots or direct contact channel. Email and production domain remain undecided. GitHub is a public profile, not direct messaging.
-
+Astro static pages, selectively hydrated Svelte, TypeScript 6 and Bun. Public source governs project claims. vs-notrack and nohint-portfolio are owned work. Monolith belongs to fraa2a; nohint404 is a contributor, with historical WinUI/C# changes distinguished from current Tauri/Preact. No invented metrics, career, screenshot, hardware or AI claims. LAB is a site toy, not a separate claimed project.
 ## Brand Commitments
-Identity nohint404. Linux user explicitly stated by owner. Playful, precise, technical and personal, not corporate, childish, gamer-themed or a fake terminal. Dark foundational palette. Motion should explain real relationships, remain fast, and respect reduced motion.
-
+nohint404 without a trailing underscore. Linux is owner-confirmed. Warm light workspace with strong scene colors, large typography and tactile native interactions. No covering intro, scroll hijack, fake hacker interface or autoplay sound. Current redesign supersedes the former dark foundational palette.
+## Contact
+Owner-approved contact@nohint.dev and Discord handle nohint404. GitHub appears above email, then Discord as text/copy, without an invented Discord URL. SITE_URL remains explicit deployment configuration; do not infer the site domain from email.
 ## Evidence on Hand
-src/data/projects.ts and docs/content-evidence.md hold existing pinned project sources. Monolith research verifies public nohint404 commits and separates current Tauri/Preact architecture from historical WinUI/C# audio UI contributions. No public-contact email approved.
-
+src/data/projects.ts and monolith.ts retain pinned repository citations; historical research remains under docs. The current site data is implementation-backed. No runtime GitHub activity feed. Vercel Web Analytics remains installed.
 ## Accessibility & Inclusion
-All functionality has keyboard and touch paths. Visible focus, meaningful semantic links, modal focus restoration, reduced-motion final states and static content without JavaScript. No scroll hijacking or animation gate.
+Semantic content and ordinary links before JavaScript, keyboard/touch alternatives, visible focus, native dialog behavior, live copy feedback, runtime reduced-motion cancellation and no required animation. Technical evidence is readable in static sections and native details.

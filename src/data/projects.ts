@@ -23,13 +23,13 @@ export const projects: Project[] = [
   {
     slug: 'portfolio', role: 'Owned work', repositoryOwner: 'nohint404', name: 'nohint-portfolio', kind: 'This website',
     description: 'The site you are reading.',
-    summary: 'This website: static Astro pages with small Svelte islands, a shell-style entrance and case studies drawn from public source.',
+    summary: 'This website: static Astro pages with small Svelte islands, an interactive workspace and case studies drawn from public source.',
     technologies: ['Astro', 'Svelte', 'TypeScript', 'Bun'],
     repository: 'https://github.com/nohint404/nohint-portfolio',
     sections: [
-      { title: 'Static pages, small islands.', text: 'Routes are prerendered Astro pages. Svelte hydrates only where interaction lives: the command palette, the project finder and the architecture diagrams. Everything else is static HTML.', source: site + 'src/pages/index.astro', label: 'Read the homepage source' },
-      { title: 'A shell you can inspect.', text: 'The entrance is a small script, not a framework: staged shell lines, a progress bar and a wipe, all skipped under reduced motion and absent without JavaScript.', source: site + 'src/layouts/Layout.astro', label: 'Inspect the entrance script' },
-      { title: 'One typed source for all content.', text: 'Project entries live in a single typed collection that feeds the homepage, detail pages, the palette and the finder, so nothing drifts between them.', source: site + 'src/data/projects.ts', label: 'Read the content layer' },
+      { title: 'Static pages, small islands.', text: 'Routes are prerendered Astro pages. Svelte hydrates only where interaction lives: the command palette, the workspace and sandbox and the architecture diagrams. Everything else is static HTML.', source: site + 'src/pages/index.astro', label: 'Read the homepage source' },
+      { title: 'A shell you can inspect.', text: 'The entrance is a small script, not a framework: a short identity assembly over an already readable page, skipped under reduced motion. The workspace responds to input without blocking navigation.', source: site + 'src/components/scenes/HeroScene.astro', label: 'Inspect the entrance script' },
+      { title: 'One typed source for all content.', text: 'Project entries live in a single typed collection that feeds the homepage, detail pages, the palette and the sandbox. The collection keeps project facts together.', source: site + 'src/data/projects.ts', label: 'Read the content layer' },
       { title: 'Checks before claims.', text: 'CI runs Astro and Svelte checks, unit tests, the production build and a static audit that also scans rendered pages for secret patterns and unsupported content.', source: site + '.github/workflows/ci.yml', label: 'Read the CI workflow' },
     ],
   },

@@ -1,3 +1,5 @@
+> Historical record: superseded by the light workbench redesign. Current source, DESIGN.md, redesign-direction.md and redesign-validation.md take precedence. Old checks and contact/stack statements are not current evidence.
+
 # Revamp / home and project surfaces
 Mode: Experience. Product facts captured from the user's explicit proceed-without-phase-permissions brief. No image generation tools; code-led implementation.
 

@@ -1,0 +1,5 @@
+---
+interface Props { circle?: boolean; class?: string }
+const { circle = false, class: className = '' } = Astro.props;
+---
+<svg class={`drawn-line ${className}`} viewBox={circle ? '0 0 220 100' : '0 0 460 38'} fill="none" aria-hidden="true" focusable="false"><path pathLength="1" d={circle ? 'M199 30C174 0 39 4 15 40C-13 86 152 110 200 75C224 57 207 26 178 19' : 'M5 24C101 8 266 32 449 12C460 9 445 8 422 13'} /></svg>

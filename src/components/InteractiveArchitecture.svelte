@@ -32,4 +32,5 @@
   </div>
   <div class="node-inspector" aria-live="polite"><span class="path">❯ inspect {inspected}</span><p>{nodes.find(node => node.id === inspected)?.detail}</p></div>
   <p class="caveat">A map of the Linux/macOS script. Nothing runs here and neither mode promises privacy. Poke the source first — this stuff touches your system.</p>
+<noscript><div>{#each nodes as item}<details><summary>{item.name}</summary><p>{item.detail}</p></details>{/each}</div></noscript>
 </figure>

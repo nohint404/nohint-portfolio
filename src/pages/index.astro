@@ -1,70 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import InteractiveArchitecture from '../components/InteractiveArchitecture.svelte';
-import ProjectSelector from '../components/ProjectSelector.svelte';
-import CapabilityExplorer from '../components/CapabilityExplorer.svelte';
-import { projects } from '../data/projects';
-import { profile } from '../data/profile';
-const [tool, collaborated, previous] = projects;
+import HeroScene from '../components/scenes/HeroScene.astro';
+import ProjectsScene from '../components/scenes/ProjectsScene.astro';
+import LabScene from '../components/scenes/LabScene.astro';
+import AboutScene from '../components/scenes/AboutScene.astro';
+import ContactScene from '../components/scenes/ContactScene.astro';
 ---
-<Layout>
-  <section class="hero shell" aria-labelledby="hero-title">
-    <div class="hero-top"><p class="path intro-signal"><span aria-hidden="true">~ ❯ </span>whoami</p><p class="quiet">currently: tinkering</p></div>
-    <h1 id="hero-title">I break my editor<br />on purpose.<br /><span class="second-line">Then I ship the fix.</span></h1>
-    <div class="hero-bottom"><a class="text-link work-jump" href="#work">Explore the work <span aria-hidden="true">↓</span></a><div class="hero-description"><p>I'm nohint404. I build developer tooling and web interfaces, mostly from a Linux terminal.</p><a class="text-link" href="#contact">Get in touch <span aria-hidden="true">↗</span></a></div></div>
-  </section>
-  <section id="work" class="work shell" aria-labelledby="work-title">
-    <div class="section-top"><h2 id="work-title">~/work</h2><span class="quiet">Three things worth opening.</span></div>
-    <ProjectSelector projects={projects} client:visible />
-    <article class="feature">
-      <div class="project-copy"><p class="path">~/work/vs-notrack</p><h3><a href="/work/vs-notrack/">vs-notrack</a></h3><p class="project-deck">{tool.description}</p><p class="muted">{tool.summary}</p><ul class="tags" aria-label="Technologies">{tool.technologies.map(technology => <li>{technology}</li>)}</ul><a class="text-link" href="/work/vs-notrack/">Inspect the project <span aria-hidden="true">↗</span></a></div>
-      <InteractiveArchitecture client:visible />
-    </article>
-    <article class="previous collab"><div><p class="quiet">{collaborated.kind} · Contributed work / fraa2a</p><h3><a href="/work/monolith/">Monolith<span aria-hidden="true">↗</span></a></h3></div><div><p>{collaborated.summary}</p><ul class="tags" aria-label="Technologies">{collaborated.technologies.map(technology => <li>{technology}</li>)}</ul><a class="text-link" href="/work/monolith/">Read the contributions</a></div></article>
-    <article class="previous"><div><p class="quiet">{previous.kind}</p><h3><a href="/work/portfolio/">Portfolio<span aria-hidden="true">↗</span></a></h3></div><div><p>{previous.summary}</p><ul class="tags" aria-label="Technologies">{previous.technologies.map(technology => <li>{technology}</li>)}</ul><a class="text-link" href="/work/portfolio/">Read the implementation</a></div></article>
-  </section>
-  <section id="about" class="about shell" aria-labelledby="about-title">
-    <div><p class="path">~/about</p><h2 id="about-title">Close to the tool.<br />Careful with<br />the interface.</h2></div>
-    <div class="about-body"><p class="large-copy">My public work moves between the development environment and the browser.</p><p class="muted">In vs-notrack, that means working through editor settings, extension state and configuration tests. On this site, it means static Astro pages with small Svelte islands. Different surfaces; concrete implementation details.</p><p class="muted">Linux is part of how I work. Its shortcuts, paths and direct feedback also shape this site, without getting between you and the work.</p><p class="muted">I test on my own machine first — if it survives my setup, it ships.</p>
-    <div class="capabilities"><h3>What I actually use</h3><CapabilityExplorer projects={projects} client:visible /></div></div>
-  </section>
-  <section id="contact" class="contact shell" aria-labelledby="contact-title"><p class="path">~/contact</p><h2 id="contact-title">Got a weird<br />tool idea?</h2><div class="contact-bottom"><p>Something broken?<br />Something worth getting right.</p><div class="contact-actions"><a class="contact-link" href={profile.github}>GitHub<span aria-hidden="true">↗</span></a>{profile.email && <a class="contact-link" href={`mailto:${profile.email}`}>{profile.email}<span aria-hidden="true">↗</span></a>}<button class="contact-link" type="button" data-copy={profile.discord} aria-label="Copy Discord username"><span>Discord — {profile.discord}</span><span aria-hidden="true" data-feedback>copy</span></button></div></div></section>
-  <script>
-    try {
-      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (!sessionStorage.getItem('portfolio-visited') && !reduce) {
-        document.querySelector('.intro-signal')?.animate([{opacity:0,transform:'translateX(-8px)'},{opacity:1,transform:'translateX(0)'}],{duration:240,delay:650,easing:'ease-out',fill:'backwards'});
-        document.querySelector('h1')?.animate([{opacity:.45},{opacity:1}],{duration:360,delay:650,easing:'ease-out',fill:'backwards'});
-      }
-      // ReactBits ClickSpark idea, native port: one-shot accent sparks on hero links.
-      if (!reduce) {
-        document.querySelector('.hero-bottom')?.addEventListener('click', (ev) => {
-          const anchor = ev.target instanceof Element ? ev.target.closest('a') : null;
-          if (!anchor) return;
-          anchor.classList.add('spark-host');
-          for (let i = 0; i < 6; i++) {
-            const dot = document.createElement('span');
-            dot.className = 'spark';
-            dot.setAttribute('aria-hidden', 'true');
-            anchor.appendChild(dot);
-            const angle = (i / 6) * Math.PI * 2 + Math.random() * .4;
-            const dist = 22 + Math.random() * 14;
-            dot.animate([
-              {transform:'translate(-50%,-50%)',opacity:1},
-              {transform:`translate(${Math.cos(angle)*dist-3}px,${Math.sin(angle)*dist-3}px)`,opacity:0}
-            ], {duration:360,easing:'cubic-bezier(.16,1,.3,1)'}).finished.finally(() => dot.remove());
-          }
-        });
-      }
-      const copyBtn = document.querySelector<HTMLButtonElement>('[data-copy]');
-      copyBtn?.addEventListener('click', () => {
-        const text = copyBtn.dataset.copy ?? '';
-        const note = copyBtn.querySelector('[data-feedback]');
-        const say = (msg: string) => { if (note) note.textContent = msg; };
-        if (navigator.clipboard) navigator.clipboard.writeText(text).then(() => { say('copied ✓'); setTimeout(() => say('copy'), 1600); }).catch(() => say(text));
-        else say(text);
-      });
-      sessionStorage.setItem('portfolio-visited','1');
-    } catch { /* Storage may be unavailable; content is already visible. */ }
-  </script>
-</Layout>
+<Layout><HeroScene /><ProjectsScene /><LabScene /><AboutScene /><ContactScene /></Layout>

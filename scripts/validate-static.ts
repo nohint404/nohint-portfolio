@@ -24,6 +24,18 @@ for (const page of pages) {
   }
 }
 assert(existsSync('dist/share.png'));
+const home = readFileSync('dist/index.html', 'utf8');
+const contact = home.slice(home.indexOf('id="contact"'));
+assert(contact.indexOf('https://github.com/nohint404') < contact.indexOf('mailto:contact@nohint.dev'), 'GitHub before email');
+assert(contact.includes('Discord') && contact.includes('nohint404'), 'Discord handle visible');
+assert(home.includes('id="lab"') && home.includes('id="terminal-command"'), 'optional terminal present');
+assert(!home.includes('boot-shell') && !home.includes('portfolio-visited'), 'no blocking legacy boot');
+const monolith = readFileSync('dist/work/monolith/index.html', 'utf8');
+assert(monolith.includes('My contribution record.') && monolith.includes('3fbe425de2a611eafcac48c8e857fb52a7c5578c'), 'static contribution evidence');
+for (const page of pages) {
+  const html = readFileSync(join('dist', page), 'utf8');
+  for (const [, asset] of html.matchAll(/(?:src|content)="(\/(?:_astro\/|share)[^"]+)"/g)) assert(existsSync(join('dist', asset!)), `${page}: asset ${asset}`);
+}
 console.log(`PASS: ${pages.length} static pages; ${links} local links/assets and anchors; metadata, source-only content and secret-signature checks.`);
 console.log(`External links (${external.size}):\n${[...external].join('\n')}`);
 let js = 0;
@@ -33,3 +45,5 @@ for (const file of readdirSync('dist/_astro').filter(file => file.endsWith('.js'
   console.log(`${file}: ${content.length} bytes, ${Bun.gzipSync(content).length} gzip`);
 }
 console.log(`Total emitted JS: ${js} bytes (includes deferred architecture).`);
+
+assert(js < 85000, `JavaScript budget exceeded: ${js} > 85000 bytes`);
