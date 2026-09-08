@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import '../../styles/psystream-discord.css';
 
 const streamUrl = 'https://stream.psymariux.dev/';
 const languages = [
@@ -12,7 +13,7 @@ const languages = [
   { name: 'Other', share: 0.8 },
 ];
 ---
-<Layout title="PsyStream — nohint404" description="PsyStream is a live shipped website built by nohint404, backed by a private TypeScript, Rust, Python and Astro codebase.">
+<Layout title="PsyStream — nohint404" description="PsyStream is a live streaming website built by nohint404 for discovering and watching anime, films and TV series through a broad choice of available sources, backed by a private TypeScript, Rust, Python and Astro codebase.">
   <div class="shell psystream-case">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">~</a><span>/</span><a href="/#work">work</a><span>/</span><span aria-current="page">psystream</span></nav>
 
@@ -20,7 +21,7 @@ const languages = [
       <div class="psystream-hero-copy">
         <p class="quiet">Featured live build · private codebase</p>
         <h1>PsyStream <span class="project-dot" aria-hidden="true"></span></h1>
-        <p class="case-summary">A shipped web experience I built and operate. The product is public; its repository is private, so this page documents what is appropriate to show without pretending the source is open.</p>
+        <p class="case-summary">A streaming website I built and operate for discovering and watching anime, films and TV series through a broad selection of available sources. The product is public; its repository is private, so this page documents what is appropriate to show without pretending the source is open.</p>
         <ul class="tags" aria-label="Primary technologies"><li>TypeScript</li><li>Rust</li><li>Python</li><li>Astro</li></ul>
         <div class="psystream-hero-actions"><a class="primary-link" href={streamUrl} target="_blank" rel="noreferrer">Open PsyStream <span aria-hidden="true">↗</span></a><a class="text-link" href="/#work">Back to selected work</a></div>
         <p class="psystream-private-note">Repository: private / not open source. No source links or public-code claims are presented here.</p>
@@ -29,8 +30,29 @@ const languages = [
     </header>
 
     <section class="psystream-detail-grid" aria-labelledby="psystream-built-title">
-      <h2 id="psystream-built-title">Built as a real product.</h2>
-      <div><p>PsyStream is shown differently from the public repositories in this portfolio. Instead of manufacturing a source-code walkthrough for code visitors cannot inspect, this page focuses on the deployed surface, the technology mix and the fact that the implementation remains private.</p><p>The live experience is the primary artifact: you can open it, use it and judge the shipped result directly.</p></div>
+      <h2 id="psystream-built-title">Built as a real streaming product.</h2>
+      <div><p>PsyStream is designed as an easy-to-explore streaming experience for anime, films and TV series, with a wide choice of available sources so viewers can move between options from one interface.</p><p>It is shown differently from the public repositories in this portfolio. Instead of manufacturing a source-code walkthrough for code visitors cannot inspect, this page focuses on the deployed surface, the technology mix and the fact that the implementation remains private.</p><p>The live experience is the primary artifact: you can open it, use it and judge the shipped result directly.</p></div>
+    </section>
+
+    <section class="psystream-discord-section" aria-labelledby="psystream-discord-title">
+      <div class="psystream-discord-copy">
+        <p class="quiet">Separate community surface · Rust bot + backend integration</p>
+        <h2 id="psystream-discord-title">Discord Activity.</h2>
+        <p>PsyStream also has a Discord layer that lives beside the streaming site. A separate Rust bot talks to the backend and shared session state, turning what is happening on PsyStream into something the community can interact with directly from Discord.</p>
+        <p>It can surface active viewers and what they are watching, report live Watch Together sessions, expose personal viewing statistics and top titles, while Discord OAuth and guild membership checks connect the web account side back to the community.</p>
+        <ul class="psystream-discord-points" aria-label="Discord integration features"><li>Discord OAuth</li><li>Guild membership</li><li>Watch Together</li><li>Live watching activity</li><li>User stats</li><li>Top titles</li><li>Rust bot service</li></ul>
+      </div>
+
+      <div class="psystream-discord-shell" aria-label="Stylized PsyStream Discord activity preview">
+        <div class="psystream-discord-topbar"><div class="psystream-discord-brand"><span class="psystream-discord-mark" aria-hidden="true">PS</span><span>PsyStream Activity</span></div><span class="psystream-discord-status">bot online</span></div>
+        <div class="psystream-discord-body">
+          <div class="psystream-discord-command">/attivi</div>
+          <div class="psystream-discord-response"><strong>PsyStream</strong><p><span class="discord-accent">Live activity</span> · see which members are currently watching and the title or episode they are on.</p></div>
+          <div class="psystream-discord-command">/watching</div>
+          <div class="psystream-discord-response"><strong>Watch Together</strong><p>Active synchronized sessions can be surfaced directly in Discord, including the title, episode context and host.</p></div>
+          <div class="psystream-discord-grid" aria-label="Other bot capabilities"><div class="psystream-discord-metric"><span>COMMAND</span><strong>/stats</strong></div><div class="psystream-discord-metric"><span>COMMAND</span><strong>/top</strong></div><div class="psystream-discord-metric"><span>AUTH</span><strong>Discord OAuth</strong></div></div>
+        </div>
+      </div>
     </section>
 
     <section class="psystream-language-section" aria-labelledby="psystream-language-title">
