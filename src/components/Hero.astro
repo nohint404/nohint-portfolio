@@ -1,0 +1,23 @@
+---
+import ProjectSelector from './ProjectSelector.svelte';
+import { projects } from '../data/projects';
+---
+<section class="hero shell" aria-labelledby="hero-title">
+  <div class="hero-identity"><p class="hero-command path">~ ❯ whoami</p><h1 id="hero-title">nohint404<span aria-hidden="true">.</span></h1><p class="hero-statement">I make tools.<br />I get inside them.</p><p class="hero-copy">Developer tooling, web interfaces and contributions to desktop software. Linux is my usual way in.</p><div class="hero-actions"><a class="action-link" href="#work">Inspect the work <span aria-hidden="true">↓</span></a><a href="#contact">Find me</a></div></div>
+  <ProjectSelector projects={projects} client:load />
+  <div class="hero-tail"><span class="path">~/index → ~/work</span><p>Source included. Curiosity encouraged.</p></div>
+</section>
+<script>
+  import { motion } from '../lib/motion';
+  try {
+    const preference = matchMedia('(prefers-reduced-motion: reduce)');
+    if (!sessionStorage.getItem('revamp-visited') && !preference.matches) {
+      const title = document.querySelector('h1');
+      const animation = title?.animate([{clipPath:'inset(0 100% 0 0)',letterSpacing:'.04em'},{clipPath:'inset(0 0 0 0)',letterSpacing:'-.04em'}], {duration:motion.narrative,easing:motion.ease});
+      const end = () => animation?.finish();
+      preference.addEventListener('change',end,{once:true});
+      animation?.finished.then(() => preference.removeEventListener('change',end));
+    }
+    sessionStorage.setItem('revamp-visited','1');
+  } catch { /* The already-rendered identity never depends on storage or animation. */ }
+</script>

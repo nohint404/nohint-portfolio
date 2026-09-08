@@ -1,0 +1,18 @@
+---
+import { profile } from '../data/profile';
+---
+<section id="contact" class="contact shell" aria-labelledby="contact-title"><div class="contact-command path">❯ cd ~/contact</div><h2 id="contact-title">Still curious?<br />Good. Me too.</h2><div class="contact-bottom"><p>Follow the source.<br />See what I’m working on.</p>{profile.email ? <a class="contact-link" href={`mailto:${profile.email}`}>{profile.email} ↗</a> : <div><a class="contact-link" href={profile.github}>Find me on GitHub ↗</a><p class="contact-note">My verified public destination. GitHub has no direct messaging.</p></div>}</div></section>
+<script>
+  import { motion } from '../lib/motion';
+  const node = document.querySelector<HTMLElement>('.contact-command');
+  const preference = matchMedia('(prefers-reduced-motion: reduce)');
+  let animation: Animation | undefined;
+  const finish = () => animation?.finish();
+  preference.addEventListener('change',finish);
+  const observer = new IntersectionObserver(entries => {
+    if (!entries.some(entry => entry.isIntersecting)) return;
+    observer.disconnect();
+    if (!preference.matches) animation = node?.animate([{letterSpacing:'.15em'},{letterSpacing:'0em'}],{duration:motion.layout,easing:motion.ease});
+  });
+  if(node) observer.observe(node);
+</script>
