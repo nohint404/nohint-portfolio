@@ -131,7 +131,7 @@
         presence.active_on_discord_desktop ? 'desktop' : null,
         presence.active_on_discord_mobile ? 'mobile' : null,
         presence.active_on_discord_web ? 'web' : null,
-      ].filter(Boolean)
+      ].filter((platform): platform is string => platform !== null)
     : [];
 </script>
 
