@@ -3,26 +3,42 @@
 
   export let userId: string;
 
-  let revision = Date.now();
+  let refreshTick = 0;
   let failed = false;
+  let theme: 'light' | 'dark' = 'light';
 
   const profileUrl = `https://discord.dog/${userId}`;
-  const cardBase = `https://discord.dog/${userId}.png`;
 
-  $: cardUrl = `${cardBase}?v=${revision}`;
+  $: embedWidth = refreshTick % 2 === 0 ? 800 : 799;
+  $: cardUrl = `https://discord.dog/${userId}.png?theme=${theme}&type=discord&display=all&width=${embedWidth}&font=uni-sans`;
+
+  function syncTheme() {
+    theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+  }
 
   function refresh() {
     failed = false;
-    revision = Date.now();
+    refreshTick += 1;
   }
 
   onMount(() => {
+    syncTheme();
+
+    const observer = new MutationObserver(syncTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+
     const timer = window.setInterval(refresh, 30_000);
     const onVisibility = () => {
       if (document.visibilityState === 'visible') refresh();
     };
+
     document.addEventListener('visibilitychange', onVisibility);
+
     return () => {
+      observer.disconnect();
       window.clearInterval(timer);
       document.removeEventListener('visibilitychange', onVisibility);
     };
@@ -45,6 +61,8 @@
         src={cardUrl}
         alt="Live Discord profile showing avatar, status and public activity"
         decoding="async"
+        loading="eager"
+        referrerpolicy="no-referrer"
         on:error={() => (failed = true)}
       />
     {:else}
