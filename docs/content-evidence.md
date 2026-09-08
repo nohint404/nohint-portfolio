@@ -5,6 +5,8 @@ Public GitHub discovery performed 2026-09-07 via authenticated `gh api` against 
 
 **Use two projects, not 4–6.** Lead with vs-notrack because its implementation and recent authored history supply the strongest technical evidence, without calling it a flagship. Present Portfolio as an earlier interface experiment. Exclude empty Mods/nohint-portfolio and Icarus fork from selected work. There is no meaningful remaining archive; don't pad one.
 
+**Superseded 2026-09-08: the old React repo was deleted. The third entry is now this site itself (nohint-portfolio, Astro/Svelte). Below is the original research record.**
+
 ## Files Retrieved
 Remote paths below use exact repository-relative paths, current main at retrieval. Pin claims to commits when possible.
 1. `nohint404/vs-notrack/vscode-obliterate-trackers.sh` lines 1–100, 110–330: Bash orchestration, embedded Python JSON/SQLite manipulation, mode selection, backups, environment/hosts/launcher operations.
@@ -37,7 +39,7 @@ Remote paths below use exact repository-relative paths, current main at retrieva
 - No screenshots in repository tree. Use a designed source/architecture visualization rather than fake app imagery.
 - Status wording: “Public source · updated September 2026” or omit timestamp. Do not assert build passing: runs not checked. Do not repeat README “zero Microsoft”, “under 2 seconds”, guaranteed privacy, universal safety, or production maturity. Scripts were NOT executed because they alter the host.
 
-### Portfolio (previous iteration)
+### Portfolio (previous iteration — repo deleted, research record only)
 - Repository: https://github.com/nohint404/Portfolio
 - Main at retrieval: `9cf1942760210aad84f046b6f8a72fd6a250f0a9`.
 - Suggested description: “An earlier React portfolio exploring animated typography, interactive presentation and a serverless contact endpoint.”

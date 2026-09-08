@@ -28,7 +28,7 @@
         <div class="preview-diagram" aria-hidden="true">
           {#if project.slug === 'vs-notrack'}<span>settings.json</span><i>↘</i><strong>Normal / Strict</strong><i>↗</i><span>state.vscdb</span>
           {:else if project.slug === 'monolith'}<span>capture + audio</span><i>↓</i><strong>encode → replay</strong><i>↓</i><span>files / local controls</span>
-          {:else}<span>React components</span><i>↓</i><strong>interface / motion</strong><i>↓</i><span>Vite build</span>{/if}
+          {:else}<span>Astro pages</span><i>↓</i><strong>islands / motion</strong><i>↓</i><span>Bun build</span>{/if}
         </div>
         <p class="role">{project.role} / {project.repositoryOwner}</p>
         <p>{project.summary}</p>

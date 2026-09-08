@@ -1,6 +1,6 @@
 import { monolith } from './monolith';
 const vs = 'https://github.com/nohint404/vs-notrack/blob/b107464c01198e3f136e7c8a930af0b20972a9b8/';
-const old = 'https://github.com/nohint404/Portfolio/blob/9cf1942760210aad84f046b6f8a72fd6a250f0a9/';
+const site = 'https://github.com/nohint404/nohint-portfolio/blob/main/';
 export interface Contribution { title: string; text: string; source: string; nodes: string[] }
 export interface ArchitectureNode { id: string; label: string; detail: string; group: 'media' | 'control'; next?: string }
 export interface Project { slug: string; name: string; kind: string; role: 'Owned work' | 'Contributed work' | 'Earlier work'; repositoryOwner: string; description: string; summary: string; technologies: string[]; repository: string; sections: {title: string; text: string; source: string; label: string}[]; contributions?: Contribution[]; architecture?: ArchitectureNode[] }
@@ -21,15 +21,16 @@ export const projects: Project[] = [
   },
   monolith,
   {
-    slug: 'portfolio', role: 'Earlier work', repositoryOwner: 'nohint404', name: 'Portfolio', kind: 'Earlier interface experiment',
-    description: 'An earlier exploration of the personal web.',
-    summary: 'A React portfolio exploring animated typography, interactive presentation and a serverless contact endpoint.',
-    technologies: ['React', 'JavaScript', 'Vite', 'Tailwind CSS'],
-    repository: 'https://github.com/nohint404/Portfolio',
+    slug: 'portfolio', role: 'Owned work', repositoryOwner: 'nohint404', name: 'nohint-portfolio', kind: 'This website',
+    description: 'The site you are reading.',
+    summary: 'This website: static Astro pages with small Svelte islands, a shell-style entrance and case studies drawn from public source.',
+    technologies: ['Astro', 'Svelte', 'TypeScript', 'Bun'],
+    repository: 'https://github.com/nohint404/nohint-portfolio',
     sections: [
-      { title: 'An interface assembled in React.', text: 'The application composes sections in React, using Framer Motion for entrance handling and Lenis for scroll integration. Vite builds the frontend, with Tailwind CSS in the styling stack.', source: old + 'src/App.jsx#L1-L77', label: 'Read the application composition' },
-      { title: 'A small serverless boundary.', text: 'The contact form posts JSON to /api/contact. The serverless endpoint forwards it to an environment-configured Discord webhook. That keeps the webhook URL out of browser code, but the endpoint returns success even when delivery fails or configuration is missing. It is a limitation, not a pattern reused here.', source: old + 'api/contact.js#L1-L79', label: 'Inspect the contact endpoint' },
-      { title: 'Source, rather than a live demo.', text: 'The repository’s listed deployment was unavailable during the source audit. The public repository remains the reference. This new site takes a different approach: static Astro pages, small Svelte islands and native scrolling.', source: old + 'package.json#L1-L44', label: 'View the original stack' },
+      { title: 'Static pages, small islands.', text: 'Routes are prerendered Astro pages. Svelte hydrates only where interaction lives: the command palette, the project finder and the architecture diagrams. Everything else is static HTML.', source: site + 'src/pages/index.astro', label: 'Read the homepage source' },
+      { title: 'A shell you can inspect.', text: 'The entrance is a small script, not a framework: staged shell lines, a progress bar and a wipe, all skipped under reduced motion and absent without JavaScript.', source: site + 'src/layouts/Layout.astro', label: 'Inspect the entrance script' },
+      { title: 'One typed source for all content.', text: 'Project entries live in a single typed collection that feeds the homepage, detail pages, the palette and the finder, so nothing drifts between them.', source: site + 'src/data/projects.ts', label: 'Read the content layer' },
+      { title: 'Checks before claims.', text: 'CI runs Astro and Svelte checks, unit tests, the production build and a static audit that also scans rendered pages for secret patterns and unsupported content.', source: site + '.github/workflows/ci.yml', label: 'Read the CI workflow' },
     ],
   },
 ];
