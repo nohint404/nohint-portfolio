@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import '../../styles/psystream-discord.css';
 
 const streamUrl = 'https://stream.psymariux.dev/';
 const languages = [
@@ -32,27 +31,6 @@ const languages = [
     <section class="psystream-detail-grid" aria-labelledby="psystream-built-title">
       <h2 id="psystream-built-title">Built as a real streaming product.</h2>
       <div><p>PsyStream is designed as an easy-to-explore streaming experience for anime, films and TV series, with a wide choice of available sources so viewers can move between options from one interface.</p><p>It is shown differently from the public repositories in this portfolio. Instead of manufacturing a source-code walkthrough for code visitors cannot inspect, this page focuses on the deployed surface, the technology mix and the fact that the implementation remains private.</p><p>The live experience is the primary artifact: you can open it, use it and judge the shipped result directly.</p></div>
-    </section>
-
-    <section class="psystream-discord-section" aria-labelledby="psystream-discord-title">
-      <div class="psystream-discord-copy">
-        <p class="quiet">Separate community surface · Rust bot + backend integration</p>
-        <h2 id="psystream-discord-title">Discord Activity.</h2>
-        <p>PsyStream also has a Discord layer that lives beside the streaming site. A separate Rust bot talks to the backend and shared session state, turning what is happening on PsyStream into something the community can interact with directly from Discord.</p>
-        <p>It can surface active viewers and what they are watching, report live Watch Together sessions, expose personal viewing statistics and top titles, while Discord OAuth and guild membership checks connect the web account side back to the community.</p>
-        <ul class="psystream-discord-points" aria-label="Discord integration features"><li>Discord OAuth</li><li>Guild membership</li><li>Watch Together</li><li>Live watching activity</li><li>User stats</li><li>Top titles</li><li>Rust bot service</li></ul>
-      </div>
-
-      <div class="psystream-discord-shell" aria-label="Stylized PsyStream Discord activity preview">
-        <div class="psystream-discord-topbar"><div class="psystream-discord-brand"><span class="psystream-discord-mark" aria-hidden="true">PS</span><span>PsyStream Activity</span></div><span class="psystream-discord-status">bot online</span></div>
-        <div class="psystream-discord-body">
-          <div class="psystream-discord-command">/attivi</div>
-          <div class="psystream-discord-response"><strong>PsyStream</strong><p><span class="discord-accent">Live activity</span> · see which members are currently watching and the title or episode they are on.</p></div>
-          <div class="psystream-discord-command">/watching</div>
-          <div class="psystream-discord-response"><strong>Watch Together</strong><p>Active synchronized sessions can be surfaced directly in Discord, including the title, episode context and host.</p></div>
-          <div class="psystream-discord-grid" aria-label="Other bot capabilities"><div class="psystream-discord-metric"><span>COMMAND</span><strong>/stats</strong></div><div class="psystream-discord-metric"><span>COMMAND</span><strong>/top</strong></div><div class="psystream-discord-metric"><span>AUTH</span><strong>Discord OAuth</strong></div></div>
-        </div>
-      </div>
     </section>
 
     <section class="psystream-language-section" aria-labelledby="psystream-language-title">
