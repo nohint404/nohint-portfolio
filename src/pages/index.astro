@@ -3,10 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import HeroScene from '../components/scenes/HeroScene.astro';
 import ProjectsScene from '../components/scenes/ProjectsScene.astro';
 import LabScene from '../components/scenes/LabScene.astro';
+import DiscordScene from '../components/scenes/DiscordScene.astro';
 import AboutScene from '../components/scenes/AboutScene.astro';
 import ContactScene from '../components/scenes/ContactScene.astro';
 ---
-<Layout><HeroScene /><ProjectsScene /><LabScene /><AboutScene /><ContactScene /></Layout>
+<Layout><HeroScene /><ProjectsScene /><LabScene /><DiscordScene /><AboutScene /><ContactScene /></Layout>
 <script>
   const scenes = Array.from(document.querySelectorAll<HTMLElement>('[data-scene]'));
   if (scenes.length && 'IntersectionObserver' in window) {
