@@ -31,5 +31,5 @@
     {#each nodes as node}<button data-step class="execution-node" class:changed={mode === 'strict' && ['product','hosts'].includes(node.id)} aria-pressed={inspected === node.id} disabled={!ready} onclick={() => inspected = node.id}><span>{node.name}</span><small>{node.id === 'product' ? mode === 'strict' ? 'Open VSX gallery' : 'Default gallery unchanged' : node.id === 'hosts' ? mode === 'strict' ? 'Extended optional blocklist' : 'Optional system changes' : node.id === 'settings' ? 'JSON preferences' : 'SQLite identifiers'}</small></button>{/each}
   </div>
   <div class="node-inspector" aria-live="polite"><span class="path">❯ inspect {inspected}</span><p>{nodes.find(node => node.id === inspected)?.detail}</p></div>
-  <p class="caveat">A map of the Linux/macOS script. Neither mode guarantees network privacy. Nothing runs here; read the source before using system-modifying software.</p>
+  <p class="caveat">A map of the Linux/macOS script. Nothing runs here and neither mode promises privacy. Poke the source first — this stuff touches your system.</p>
 </figure>

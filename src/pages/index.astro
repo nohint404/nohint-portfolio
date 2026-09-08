@@ -11,10 +11,10 @@ const [tool, collaborated, previous] = projects;
   <section class="hero shell" aria-labelledby="hero-title">
     <div class="hero-top"><p class="path intro-signal"><span aria-hidden="true">~ ❯ </span>whoami</p><p class="quiet">currently: tinkering</p></div>
     <h1 id="hero-title">I break my editor<br />on purpose.<br /><span class="second-line">Then I ship the fix.</span></h1>
-    <div class="hero-bottom"><a class="text-link work-jump" href="#work">Explore the work <span aria-hidden="true">↓</span></a><div class="hero-description"><p>I'm nohint404. I build developer tooling and web interfaces, with a Linux-minded approach to the everyday details.</p><a class="text-link" href="#contact">Get in touch <span aria-hidden="true">↗</span></a></div></div>
+    <div class="hero-bottom"><a class="text-link work-jump" href="#work">Explore the work <span aria-hidden="true">↓</span></a><div class="hero-description"><p>I'm nohint404. I build developer tooling and web interfaces, mostly from a Linux terminal.</p><a class="text-link" href="#contact">Get in touch <span aria-hidden="true">↗</span></a></div></div>
   </section>
   <section id="work" class="work shell" aria-labelledby="work-title">
-    <div class="section-top"><h2 id="work-title">~/work</h2><span class="quiet">Read the interface. Inspect the source.</span></div>
+    <div class="section-top"><h2 id="work-title">~/work</h2><span class="quiet">Three things worth opening.</span></div>
     <ProjectSelector projects={projects} client:visible />
     <article class="feature">
       <div class="project-copy"><p class="path">~/work/vs-notrack</p><h3><a href="/work/vs-notrack/">vs-notrack</a></h3><p class="project-deck">{tool.description}</p><p class="muted">{tool.summary}</p><ul class="tags" aria-label="Technologies">{tool.technologies.map(technology => <li>{technology}</li>)}</ul><a class="text-link" href="/work/vs-notrack/">Inspect the project <span aria-hidden="true">↗</span></a></div>
@@ -28,7 +28,7 @@ const [tool, collaborated, previous] = projects;
     <div class="about-body"><p class="large-copy">My public work moves between the development environment and the browser.</p><p class="muted">In vs-notrack, that means working through editor settings, extension state and configuration tests. On this site, it means static Astro pages with small Svelte islands. Different surfaces; concrete implementation details.</p><p class="muted">Linux is part of how I work. Its shortcuts, paths and direct feedback also shape this site, without getting between you and the work.</p><p class="muted">I test on my own machine first — if it survives my setup, it ships.</p>
     <div class="capabilities"><h3>What I actually use</h3><CapabilityExplorer projects={projects} client:visible /></div></div>
   </section>
-  <section id="contact" class="contact shell" aria-labelledby="contact-title"><p class="path">~/contact</p><h2 id="contact-title">Got a weird<br />tool idea?</h2><div class="contact-bottom"><p>Something broken?<br />Something worth getting right.</p>{profile.email ? <a class="contact-link" href={`mailto:${profile.email}`}>{profile.email}<span aria-hidden="true">↗</span></a> : <div><a class="contact-link" href={profile.github}>Find me on GitHub <span aria-hidden="true">↗</span></a><p class="quiet contact-note">Public projects and profile. No direct messaging here.</p></div>}</div></section>
+  <section id="contact" class="contact shell" aria-labelledby="contact-title"><p class="path">~/contact</p><h2 id="contact-title">Got a weird<br />tool idea?</h2><div class="contact-bottom"><p>Something broken?<br />Something worth getting right.</p>{profile.email ? <a class="contact-link" href={`mailto:${profile.email}`}>{profile.email}<span aria-hidden="true">↗</span></a> : <div><a class="contact-link" href={profile.github}>Find me on GitHub <span aria-hidden="true">↗</span></a><p class="quiet contact-note">No inbox here. GitHub works.</p></div>}</div></section>
   <script>
     try {
       const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
