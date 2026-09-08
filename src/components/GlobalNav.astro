@@ -1,11 +1,12 @@
 ---
 import CommandPalette from './CommandPalette.svelte';
 import MobileNav from './MobileNav.svelte';
+import ThemeToggle from './ThemeToggle.astro';
 import { navigation } from '../data/profile';
 import { projects } from '../data/projects';
 const path = Astro.url.pathname;
 ---
-<header class="site-header"><div class="nav-inner shell"><a class="identity" href="/" aria-label="nohint404 home">nohint404<span class="signal-dot" aria-hidden="true"></span></a><nav class="desktop-nav" aria-label="Main navigation">{navigation.map(item => <a href={item.href}>{item.name}</a>)}</nav><div class="header-tools"><CommandPalette projectLinks={projects.map(({name,slug}) => ({name,slug}))} client:load /><MobileNav path={path} client:load /></div></div><noscript><nav class="no-js-nav shell" aria-label="Navigation without JavaScript">{navigation.map(item => <a href={item.href}>{item.name}</a>)}</nav></noscript></header>
+<header class="site-header"><div class="nav-inner shell"><a class="identity" href="/" aria-label="nohint404 home">nohint404<span class="signal-dot" aria-hidden="true"></span></a><nav class="desktop-nav" aria-label="Main navigation">{navigation.map(item => <a href={item.href}>{item.name}</a>)}</nav><div class="header-tools"><ThemeToggle /><CommandPalette projectLinks={projects.map(({name,slug}) => ({name,slug}))} client:load /><MobileNav path={path} client:load /></div></div><noscript><nav class="no-js-nav shell" aria-label="Navigation without JavaScript">{navigation.map(item => <a href={item.href}>{item.name}</a>)}</nav></noscript></header>
 <script>
   const sections = document.querySelectorAll('main section[id]');
   const links = document.querySelectorAll<HTMLAnchorElement>('.desktop-nav a');
