@@ -1,0 +1,114 @@
+:root {
+  --bg: #FFFDF7;
+  --paper: #FFFDF7;
+  --text: #172033;
+  --muted: #667085;
+  --surface: #F3F6FC;
+  --surface-2: #E8EEF8;
+  --line: #D8E0ED;
+  --accent: #4C6FFF;
+  --yellow: #FFE36E;
+  --red: #FF675C;
+  --green: #73D7A6;
+  --green-ink: #277A59;
+  --dark: #26324D;
+  --dark-ink: #FFFDF7;
+  --sky: #EAF6FF;
+  color-scheme: light;
+}
+
+body[data-scene='tool'] {
+  background: #EEF2FF;
+}
+
+body[data-scene='monolith'] {
+  background: #EAF7F5;
+}
+
+body[data-scene='lab'] {
+  background: var(--dark);
+}
+
+.site-header {
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.primary-link {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+.primary-link:hover {
+  background: #3F5FDE;
+}
+
+.primary-link.light,
+.workspace-controls button:first-child {
+  background: var(--yellow);
+  color: var(--text);
+}
+
+.workspace-sheet.blue {
+  background: #6E88FF;
+  color: #FFFFFF;
+}
+
+.workspace-sheet.paper {
+  background: #FFFFFF;
+}
+
+.tool-world {
+  background: #E7EDFF;
+  color: var(--text);
+  --muted: #5D6A8C;
+  --line: #BCC9F2;
+  --surface: #DCE5FF;
+}
+
+.monolith-world {
+  background: #EAF7F5;
+  --surface: #D7ECE9;
+}
+
+.diagram-ui,
+.diagram-recorder {
+  background: #FFFFFF;
+}
+
+.site-recipe {
+  background: var(--yellow);
+}
+
+.lab-scene {
+  background: var(--dark);
+  color: var(--dark-ink);
+  --muted: #CBD3E4;
+  --line: #53617C;
+}
+
+.lab-scene .terminal {
+  background: #FFF8E8;
+  color: var(--text);
+  box-shadow: 0 25px 50px #10192A33;
+}
+
+.lab-scene .terminal-shortcuts button,
+.lab-scene .contact-small button {
+  background: #EAF0FA;
+  color: var(--text);
+}
+
+::selection {
+  background: var(--yellow);
+  color: var(--text);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .site-header {
+    background: var(--paper);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
