@@ -38,7 +38,7 @@
       label.textContent = preference[0]!.toUpperCase() + preference.slice(1);
       picker.querySelectorAll<SVGElement>('[data-theme-icon]').forEach(icon => icon.toggleAttribute('hidden', icon.dataset.themeIcon !== preference));
       choices.forEach(button => button.setAttribute('aria-checked', String(button.dataset.themeChoice === preference)));
-      document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.setAttribute('content', resolved === 'dark' ? '#0B1826' : '#F6FBFF');
+      document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.setAttribute('content', resolved === 'dark' ? '#091825' : '#F6FBFF');
       if (persist) try { localStorage.setItem(STORAGE_KEY, preference); } catch {}
     };
     const close = () => { menu.hidden = true; trigger.setAttribute('aria-expanded', 'false'); };

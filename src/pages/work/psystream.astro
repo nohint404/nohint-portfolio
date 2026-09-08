@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const streamUrl = 'https://stream.psymariux.dev/';
+const languages = [
+  { name: 'TypeScript', share: 55 },
+  { name: 'Rust', share: 38.8 },
+  { name: 'Python', share: 2.8 },
+  { name: 'Astro', share: 1 },
+  { name: 'JavaScript', share: 0.8 },
+  { name: 'CSS', share: 0.8 },
+  { name: 'Other', share: 0.8 },
+];
+---
+<Layout title="PsyStream — nohint404" description="PsyStream is a live shipped website built by nohint404, backed by a private TypeScript, Rust, Python and Astro codebase.">
+  <div class="shell psystream-case">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">~</a><span>/</span><a href="/#work">work</a><span>/</span><span aria-current="page">psystream</span></nav>
+
+    <header class="psystream-hero">
+      <div class="psystream-hero-copy">
+        <p class="quiet">Featured live build · private codebase</p>
+        <h1>PsyStream <span class="project-dot" aria-hidden="true"></span></h1>
+        <p class="case-summary">A shipped web experience I built and operate. The product is public; its repository is private, so this page documents what is appropriate to show without pretending the source is open.</p>
+        <ul class="tags" aria-label="Primary technologies"><li>TypeScript</li><li>Rust</li><li>Python</li><li>Astro</li></ul>
+        <div class="psystream-hero-actions"><a class="primary-link" href={streamUrl} target="_blank" rel="noreferrer">Open PsyStream <span aria-hidden="true">↗</span></a><a class="text-link" href="/#work">Back to selected work</a></div>
+        <p class="psystream-private-note">Repository: private / not open source. No source links or public-code claims are presented here.</p>
+      </div>
+      <a class="psystream-logo-card" href={streamUrl} target="_blank" rel="noreferrer" aria-label="Open PsyStream live site"><img src="/psystream-logo.webp" width="320" height="163" alt="PsyStream logo" /></a>
+    </header>
+
+    <section class="psystream-detail-grid" aria-labelledby="psystream-built-title">
+      <h2 id="psystream-built-title">Built as a real product.</h2>
+      <div><p>PsyStream is shown differently from the public repositories in this portfolio. Instead of manufacturing a source-code walkthrough for code visitors cannot inspect, this page focuses on the deployed surface, the technology mix and the fact that the implementation remains private.</p><p>The live experience is the primary artifact: you can open it, use it and judge the shipped result directly.</p></div>
+    </section>
+
+    <section class="psystream-language-section" aria-labelledby="psystream-language-title">
+      <div class="psystream-language-head"><div><p class="quiet">Private repository snapshot</p><h2 id="psystream-language-title">Language mix.</h2></div><p class="quiet">100% total · source remains private</p></div>
+      <div class="psystream-language-list">
+        {languages.map(language => <div class="psystream-language-row"><div class="psystream-language-meta"><strong>{language.name}</strong><span>{language.share}%</span></div><div class="psystream-language-track" aria-label={`${language.name}: ${language.share}%`}><span style={`--language-share:${language.share}%`}></span></div></div>)}
+      </div>
+    </section>
+
+    <div class="psystream-page-end"><a class="primary-link" href={streamUrl} target="_blank" rel="noreferrer">Launch the live site <span aria-hidden="true">↗</span></a><a class="text-link" href="/#contact">Get in touch</a></div>
+  </div>
+</Layout>

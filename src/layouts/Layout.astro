@@ -2,6 +2,7 @@
 import font from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url';
 import '../styles/global.css';
 import '../styles/palette-refresh.css';
+import '../styles/psystream-featured.css';
 import GlobalNav from '../components/GlobalNav.astro';
 import { profile } from '../data/profile';
 import Analytics from '@vercel/analytics/astro';
@@ -29,7 +30,7 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefin
       root.dataset.themePreference = preference;
       root.dataset.theme = resolved;
       root.style.colorScheme = resolved;
-      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', resolved === 'dark' ? '#0B1826' : '#F6FBFF');
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', resolved === 'dark' ? '#091825' : '#F6FBFF');
     })();
   </script>
   <style>@font-face{font-family:"Bricolage Grotesque Variable";font-style:normal;font-weight:200 800;font-display:swap;src:url(@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");}</style>
