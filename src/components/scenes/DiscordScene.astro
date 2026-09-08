@@ -1,0 +1,20 @@
+---
+import DiscordPresence from '../DiscordPresence.svelte';
+import { profile } from '../../data/profile';
+---
+<section id="discord" class="discord-scene" data-scene="discord" aria-labelledby="discord-title">
+  <div class="shell discord-scene-grid">
+    <div class="discord-scene-copy">
+      <p class="discord-scene-kicker">Personal presence · live</p>
+      <h2 id="discord-title">What I’m up to<br />on Discord.</h2>
+      <p class="large-copy">A small live window into my Discord account — status, public activity and what I’m listening to when Discord exposes it.</p>
+      <p>It is intentionally separate from my projects. This is personal presence, not a PsyStream feature or bot integration.</p>
+      <div class="discord-id-line"><span>Discord</span><strong>{profile.discord}</strong><code>{profile.discordId}</code></div>
+    </div>
+    <div class="discord-presence-stage">
+      <span class="discord-doodle discord-doodle-one" aria-hidden="true">↗</span>
+      <span class="discord-doodle discord-doodle-two" aria-hidden="true">✦</span>
+      <DiscordPresence userId={profile.discordId} client:visible />
+    </div>
+  </div>
+</section>
