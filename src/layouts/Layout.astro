@@ -1,6 +1,7 @@
 ---
 import font from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url';
 import '../styles/global.css';
+import '../styles/palette-refresh.css';
 import GlobalNav from '../components/GlobalNav.astro';
 import { profile } from '../data/profile';
 import Analytics from '@vercel/analytics/astro';
@@ -12,7 +13,7 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefin
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>{title}</title><meta name="description" content={description} /><meta name="theme-color" content="#FAF8F0" />
+  <title>{title}</title><meta name="description" content={description} /><meta name="theme-color" content="#FFFDF7" />
   <style>@font-face{font-family:"Bricolage Grotesque Variable";font-style:normal;font-weight:200 800;font-display:swap;src:url(@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");}</style>
   <link rel="preload" href={font} as="font" type="font/woff2" crossorigin />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
