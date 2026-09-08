@@ -15,9 +15,6 @@
   --sky-3: #B8DFFF;
   --highlight: #8ED8FF;
   --focus: #4FA8FF;
-
-  /* Legacy semantic names stay mapped into the same blue family so old
-     components remain coherent without a risky structural rewrite. */
   --yellow: #CFEAFF;
   --red: #67B7FF;
   --green: #8ED8FF;
@@ -27,21 +24,38 @@
   color-scheme: light;
 }
 
-body {
-  background: var(--bg);
+html[data-theme='dark'] {
+  --bg: #0B1826;
+  --paper: #102338;
+  --text: #EAF7FF;
+  --muted: #9AB8CC;
+  --surface: #142D45;
+  --surface-2: #193852;
+  --line: #2A4B65;
+  --accent: #79C9FF;
+  --accent-strong: #55B8FA;
+  --accent-soft: #214D6D;
+  --sky: #102A40;
+  --sky-2: #15334C;
+  --sky-3: #1A3E5B;
+  --highlight: #91D9FF;
+  --focus: #83D0FF;
+  --yellow: #214D6D;
+  --red: #79C9FF;
+  --green: #91D9FF;
+  --green-ink: #79C9FF;
+  --dark: #102A40;
+  --dark-ink: #EAF7FF;
+  color-scheme: dark;
 }
 
-body[data-scene='tool'] {
-  background: #EDF8FF;
-}
-
-body[data-scene='monolith'] {
-  background: #E6F5FF;
-}
-
-body[data-scene='lab'] {
-  background: #D9EFFF;
-}
+body { background: var(--bg); }
+body[data-scene='tool'] { background: #EDF8FF; }
+body[data-scene='monolith'] { background: #E6F5FF; }
+body[data-scene='lab'] { background: #D9EFFF; }
+html[data-theme='dark'] body[data-scene='tool'] { background: #0E2235; }
+html[data-theme='dark'] body[data-scene='monolith'] { background: #10283D; }
+html[data-theme='dark'] body[data-scene='lab'] { background: #12304A; }
 
 .site-header {
   background: color-mix(in srgb, #F6FBFF 90%, transparent);
@@ -49,65 +63,25 @@ body[data-scene='lab'] {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
+html[data-theme='dark'] .site-header { background: color-mix(in srgb, #0B1826 88%, transparent); }
+:focus-visible { outline-color: var(--focus); }
+.primary-link { background: var(--accent-strong); color: #FFFFFF; }
+.primary-link:hover { background: #258CEF; }
+.primary-link.light,.workspace-controls button:first-child { background: var(--accent-soft); color: var(--text); }
+html[data-theme='dark'] .primary-link,html[data-theme='dark'] .terminal-input button,html[data-theme='dark'] .email-link { color: #071522; }
+html[data-theme='dark'] .primary-link:hover { background: #79C9FF; }
+.signal-dot,.contact-dot { background: var(--accent-strong); }
+.drawn-line { color: var(--accent); }
+.desktop-nav a:after { background: var(--accent-strong); }
+.workspace-sheet.blue { background: var(--accent); color: #FFFFFF; }
+.workspace-sheet.yellow { background: var(--sky-2); color: var(--text); }
+.workspace-sheet.paper { background: #FFFFFF; }
+.workspace-sheet { box-shadow: 0 20px 44px rgba(47,131,189,.13); }
+html[data-theme='dark'] .workspace-sheet.blue { color: #071522; }
+html[data-theme='dark'] .workspace-sheet.paper { background: var(--paper); }
+html[data-theme='dark'] .workspace-sheet { box-shadow: 0 22px 48px rgba(1,10,20,.30); }
+.workspace-controls button,.contact-small button,.terminal-shortcuts button { background: var(--surface); color: var(--text); }
 
-:focus-visible {
-  outline-color: var(--focus);
-}
-
-.primary-link {
-  background: var(--accent-strong);
-  color: #FFFFFF;
-}
-
-.primary-link:hover {
-  background: #258CEF;
-}
-
-.primary-link.light,
-.workspace-controls button:first-child {
-  background: var(--accent-soft);
-  color: var(--text);
-}
-
-.signal-dot,
-.contact-dot {
-  background: var(--accent-strong);
-}
-
-.drawn-line {
-  color: var(--accent);
-}
-
-.desktop-nav a:after {
-  background: var(--accent-strong);
-}
-
-.workspace-sheet.blue {
-  background: var(--accent);
-  color: #FFFFFF;
-}
-
-.workspace-sheet.yellow {
-  background: var(--sky-2);
-  color: var(--text);
-}
-
-.workspace-sheet.paper {
-  background: #FFFFFF;
-}
-
-.workspace-sheet {
-  box-shadow: 0 20px 44px rgba(47, 131, 189, .13);
-}
-
-.workspace-controls button,
-.contact-small button,
-.terminal-shortcuts button {
-  background: var(--surface);
-  color: var(--text);
-}
-
-/* Projects vary only by blue tone, never by unrelated hue. */
 .tool-world {
   background: #DFF2FF;
   color: var(--text);
@@ -115,7 +89,6 @@ body[data-scene='lab'] {
   --line: #B8DCF5;
   --surface: #CDEAFF;
 }
-
 .monolith-world {
   background: #E9F7FF;
   color: var(--text);
@@ -123,30 +96,28 @@ body[data-scene='lab'] {
   --line: #C4E1F4;
   --surface: #D8EEFC;
 }
-
-.site-world {
-  background: #F6FBFF;
+.site-world { background: #F6FBFF; }
+html[data-theme='dark'] .tool-world {
+  background: #102A40;
+  color: var(--text);
+  --muted: #9AB8CC;
+  --line: #294D68;
+  --surface: #183A55;
 }
-
-.project-dot {
-  background: var(--accent-strong);
+html[data-theme='dark'] .monolith-world {
+  background: #123149;
+  color: var(--text);
+  --muted: #9EBBCF;
+  --line: #2A526D;
+  --surface: #1A3E59;
 }
+html[data-theme='dark'] .site-world { background: #0D1D2C; }
+.project-dot { background: var(--accent-strong); }
+.diagram-ui,.diagram-recorder { background: #FFFFFF; box-shadow: 0 14px 28px rgba(47,131,189,.10); }
+html[data-theme='dark'] .diagram-ui,html[data-theme='dark'] .diagram-recorder { background: var(--paper); box-shadow: 0 16px 30px rgba(1,10,20,.22); }
+.diagram-wire { background: var(--accent-strong); }
+.site-recipe { background: var(--sky-2); }
 
-.diagram-ui,
-.diagram-recorder {
-  background: #FFFFFF;
-  box-shadow: 0 14px 28px rgba(47, 131, 189, .10);
-}
-
-.diagram-wire {
-  background: var(--accent-strong);
-}
-
-.site-recipe {
-  background: var(--sky-2);
-}
-
-/* Lab is still a distinct scene, but stays bright and playful. */
 .lab-scene {
   background: #D9EFFF;
   color: var(--text);
@@ -154,35 +125,21 @@ body[data-scene='lab'] {
   --line: #ACD3EE;
   --surface: #C7E6FA;
 }
-
-.lab-scene .drawn-line {
-  color: var(--accent-strong);
-}
-
-.lab-scene .terminal {
-  background: #FFFFFF;
+html[data-theme='dark'] .lab-scene {
+  background: #12304A;
   color: var(--text);
-  box-shadow: 0 24px 52px rgba(47, 131, 189, .16);
+  --muted: #A1BDD0;
+  --line: #315772;
+  --surface: #1B405D;
 }
+.lab-scene .drawn-line { color: var(--accent-strong); }
+.lab-scene .terminal { background: #FFFFFF; color: var(--text); box-shadow: 0 24px 52px rgba(47,131,189,.16); }
+html[data-theme='dark'] .lab-scene .terminal { background: #0F2437; color: var(--text); box-shadow: 0 24px 52px rgba(1,9,18,.34); }
+.lab-scene .terminal-shortcuts button,.lab-scene .contact-small button { background: #EAF6FF; color: var(--text); }
+html[data-theme='dark'] .lab-scene .terminal-shortcuts button,html[data-theme='dark'] .lab-scene .contact-small button { background: #193A54; }
+.terminal-input button,.email-link { background: var(--accent-strong); color: #FFFFFF; }
+.term-ok { background: var(--highlight); }
 
-.lab-scene .terminal-shortcuts button,
-.lab-scene .contact-small button {
-  background: #EAF6FF;
-  color: var(--text);
-}
-
-.terminal-input button,
-.email-link {
-  background: var(--accent-strong);
-  color: #FFFFFF;
-}
-
-.term-ok {
-  background: var(--highlight);
-}
-
-/* Older embedded maps define their own palette locally; pull them back into
-   the same sky system so they do not reintroduce beige/grey islands. */
 .system-map {
   --surface: #EAF5FF;
   --muted: #5C7891;
@@ -191,16 +148,17 @@ body[data-scene='lab'] {
   background: #FFFFFF;
   color: var(--text);
 }
-
-::selection {
-  background: var(--accent-soft);
+html[data-theme='dark'] .system-map {
+  --surface: #142D45;
+  --muted: #9AB8CC;
+  --line: #2A4B65;
+  --accent: #79C9FF;
+  background: var(--paper);
   color: var(--text);
 }
+::selection { background: var(--accent-soft); color: var(--text); }
 
 @media (prefers-reduced-transparency: reduce) {
-  .site-header {
-    background: #F6FBFF;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
+  .site-header { background: #F6FBFF; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  html[data-theme='dark'] .site-header { background: #0B1826; }
 }

@@ -13,7 +13,25 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefin
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>{title}</title><meta name="description" content={description} /><meta name="theme-color" content="#F6FBFF" />
+  <title>{title}</title><meta name="description" content={description} /><meta name="theme-color" content="#F6FBFF" /><meta name="color-scheme" content="light dark" />
+  <script is:inline>
+    (() => {
+      const key = 'nohint-theme';
+      let preference = 'system';
+      try {
+        const saved = localStorage.getItem(key);
+        if (saved === 'light' || saved === 'dark') preference = saved;
+      } catch {}
+      const resolved = preference === 'system'
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : preference;
+      const root = document.documentElement;
+      root.dataset.themePreference = preference;
+      root.dataset.theme = resolved;
+      root.style.colorScheme = resolved;
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', resolved === 'dark' ? '#0B1826' : '#F6FBFF');
+    })();
+  </script>
   <style>@font-face{font-family:"Bricolage Grotesque Variable";font-style:normal;font-weight:200 800;font-display:swap;src:url(@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");}</style>
   <link rel="preload" href={font} as="font" type="font/woff2" crossorigin />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
