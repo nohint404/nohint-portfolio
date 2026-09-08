@@ -6,7 +6,7 @@ import { projects } from '../data/projects';
 const path = Astro.url.pathname === '/' ? '~/index' : '~' + Astro.url.pathname.replace(/\/$/, '');
 ---
 <header class="site-header">
-  <div class="nav-inner shell"><a class="identity" href="/" aria-label="nohint404 home">nohint404<span aria-hidden="true">_</span></a><span class="route-context path" aria-live="off">{path}</span>
+  <div class="nav-inner shell"><a class="identity" href="/" aria-label="nohint404 home">nohint404</a><span class="route-context path" aria-live="off">{path}</span>
   <nav class="desktop-nav" aria-label="Main navigation">{navigation.map(item => <a href={item.href} aria-current={path.includes('/work/') && item.name === 'Work' ? 'location' : undefined}>{item.name}</a>)}</nav>
   <div class="header-tools"><CommandPalette projectLinks={projects.map(({ name, slug }) => ({ name, slug }))} client:load /><MobileNav path={path} client:load /></div></div>
   <noscript><nav class="no-js-nav shell" aria-label="Navigation without JavaScript">{navigation.map(item => <a href={item.href}>{item.name}</a>)}<a href={profile.github}>GitHub</a></nav></noscript>

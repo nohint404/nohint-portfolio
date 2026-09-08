@@ -336,6 +336,7 @@ h3 {
 .contact-note {
   margin-top:15px
 }
+button.contact-link{background:none;border-top:0;border-right:0;border-left:0;color:inherit;font-family:inherit;cursor:pointer;text-align:left;width:100%}
 .footer {
   border-top:1px solid var(--line);
   display:flex;

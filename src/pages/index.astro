@@ -28,7 +28,7 @@ const [tool, collaborated, previous] = projects;
     <div class="about-body"><p class="large-copy">My public work moves between the development environment and the browser.</p><p class="muted">In vs-notrack, that means working through editor settings, extension state and configuration tests. On this site, it means static Astro pages with small Svelte islands. Different surfaces; concrete implementation details.</p><p class="muted">Linux is part of how I work. Its shortcuts, paths and direct feedback also shape this site, without getting between you and the work.</p><p class="muted">I test on my own machine first — if it survives my setup, it ships.</p>
     <div class="capabilities"><h3>What I actually use</h3><CapabilityExplorer projects={projects} client:visible /></div></div>
   </section>
-  <section id="contact" class="contact shell" aria-labelledby="contact-title"><p class="path">~/contact</p><h2 id="contact-title">Got a weird<br />tool idea?</h2><div class="contact-bottom"><p>Something broken?<br />Something worth getting right.</p>{profile.email ? <a class="contact-link" href={`mailto:${profile.email}`}>{profile.email}<span aria-hidden="true">↗</span></a> : <div><a class="contact-link" href={profile.github}>Find me on GitHub <span aria-hidden="true">↗</span></a><p class="quiet contact-note">No inbox here. GitHub works.</p></div>}</div></section>
+  <section id="contact" class="contact shell" aria-labelledby="contact-title"><p class="path">~/contact</p><h2 id="contact-title">Got a weird<br />tool idea?</h2><div class="contact-bottom"><p>Something broken?<br />Something worth getting right.</p><div class="contact-actions"><a class="contact-link" href={profile.github}>GitHub<span aria-hidden="true">↗</span></a>{profile.email && <a class="contact-link" href={`mailto:${profile.email}`}>{profile.email}<span aria-hidden="true">↗</span></a>}<button class="contact-link" type="button" data-copy={profile.discord} aria-label="Copy Discord username"><span>Discord — {profile.discord}</span><span aria-hidden="true" data-feedback>copy</span></button></div></div></section>
   <script>
     try {
       const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -56,6 +56,14 @@ const [tool, collaborated, previous] = projects;
           }
         });
       }
+      const copyBtn = document.querySelector<HTMLButtonElement>('[data-copy]');
+      copyBtn?.addEventListener('click', () => {
+        const text = copyBtn.dataset.copy ?? '';
+        const note = copyBtn.querySelector('[data-feedback]');
+        const say = (msg: string) => { if (note) note.textContent = msg; };
+        if (navigator.clipboard) navigator.clipboard.writeText(text).then(() => { say('copied ✓'); setTimeout(() => say('copy'), 1600); }).catch(() => say(text));
+        else say(text);
+      });
       sessionStorage.setItem('portfolio-visited','1');
     } catch { /* Storage may be unavailable; content is already visible. */ }
   </script>

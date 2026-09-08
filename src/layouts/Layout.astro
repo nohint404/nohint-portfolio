@@ -26,7 +26,7 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefin
 <a class="skip" href="#main">Skip to content</a>
 <GlobalNav />
 <main id="main"><slot /></main>
-<footer class="shell footer"><a class="identity" href="/">nohint404<span aria-hidden="true">_</span></a><p>Astro + Svelte + TypeScript + Bun / ~/end / no warranty, obviously.</p><a href={profile.github}>GitHub</a></footer>
+<footer class="shell footer"><a class="identity" href="/">nohint404</a><p>Astro + Svelte + TypeScript + Bun / ~/end / no warranty, obviously.</p><a href={profile.github}>GitHub</a></footer>
 <script>
   try {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
