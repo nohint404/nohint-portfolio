@@ -4,12 +4,14 @@ export const profile = {
   github: 'https://github.com/nohint404',
   // Published contact address, supplied by the owner.
   email: 'contact@nohint.dev' as string | undefined,
-  // Discord handle, supplied by the owner. Shown as copyable text (no profile URL invented).
+  // Discord identity, supplied by the owner. The ID powers the public presence card.
   discord: 'nohint404',
+  discordId: '1541790656639406161',
 };
 export const navigation = [
   { name: 'Work', href: '/#work' },
   { name: 'Lab', href: '/#lab' },
+  { name: 'Discord', href: '/#discord' },
   { name: 'About', href: '/#about' },
   { name: 'Contact', href: '/#contact' },
 ];
