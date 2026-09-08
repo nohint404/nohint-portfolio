@@ -6,6 +6,7 @@ export const monolith: Project = {
   description: 'Behind the recording button, a whole conversation.',
   summary: 'A Windows recording and replay app by fraa2a. I contributed active-game detection, audio controls, desktop UI and initial Stream Deck / local RPC integration.',
   technologies: ['C++', 'Preact', 'TypeScript', 'Tauri', 'SQLite'], repository: 'https://github.com/fraa2a/Monolith',
+  accent: '#0E7C7B',
   architecture: [
     {id:'capture',label:'Windows capture',detail:'Windows capture supplies BGRA frames to frame pacing, then the video encoder.',group:'media',next:'Video encoder'},
     {id:'audio',label:'WASAPI audio',detail:'Audio takes a direct route or TrackMixer path into AAC encoding. My linked changes concern detection, audio configuration and runtime state, not authorship of the audio engine.',group:'media',next:'Audio encoder'},

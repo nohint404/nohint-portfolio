@@ -3,7 +3,7 @@ const vs = 'https://github.com/nohint404/vs-notrack/blob/b107464c01198e3f136e7c8
 const site = 'https://github.com/nohint404/nohint-portfolio/blob/main/';
 export interface Contribution { title: string; text: string; source: string; nodes: string[] }
 export interface ArchitectureNode { id: string; label: string; detail: string; group: 'media' | 'control'; next?: string }
-export interface Project { slug: string; name: string; kind: string; role: 'Owned work' | 'Contributed work' | 'Earlier work'; repositoryOwner: string; description: string; summary: string; technologies: string[]; repository: string; sections: {title: string; text: string; source: string; label: string}[]; contributions?: Contribution[]; architecture?: ArchitectureNode[] }
+export interface Project { slug: string; name: string; kind: string; role: 'Owned work' | 'Contributed work' | 'Earlier work'; repositoryOwner: string; description: string; summary: string; technologies: string[]; repository: string; accent: string; sections: {title: string; text: string; source: string; label: string}[]; contributions?: Contribution[]; architecture?: ArchitectureNode[] }
 export const projects: Project[] = [
   {
     slug: 'vs-notrack', role: 'Owned work', repositoryOwner: 'nohint404', name: 'vs-notrack', kind: 'Developer tooling',
@@ -11,6 +11,7 @@ export const projects: Project[] = [
     summary: 'Scripts for configuring VS Code telemetry, extension behavior and local settings across Linux, macOS and Windows.',
     technologies: ['Bash', 'PowerShell', 'Python', 'GitHub Actions'],
     repository: 'https://github.com/nohint404/vs-notrack',
+    accent: '#FFD84A',
     sections: [
       { title: 'Configuration is more than a checkbox.', text: 'VS Code configuration spans settings files, extension state and product configuration. The shell script coordinates changes across these layers, with embedded Python handling JSON and SQLite. A separate PowerShell script addresses Windows.', source: vs + 'vscode-obliterate-trackers.sh#L65-L227', label: 'Read the configuration code' },
       { title: 'Two modes. Different tradeoffs.', text: 'Normal mode leaves the default marketplace configuration alone. Strict mode writes Open VSX gallery URLs and extends the optional hosts blocklist. These are configuration choices, not proof that all network traffic has stopped.', source: vs + 'vscode-obliterate-trackers.sh#L110-L124', label: 'Inspect mode selection' },
@@ -26,6 +27,7 @@ export const projects: Project[] = [
     summary: 'This website: static Astro pages with small Svelte islands, an interactive workspace and case studies drawn from public source.',
     technologies: ['Astro', 'Svelte', 'TypeScript', 'Bun'],
     repository: 'https://github.com/nohint404/nohint-portfolio',
+    accent: '#1E7A34',
     sections: [
       { title: 'Static pages, small islands.', text: 'Routes are prerendered Astro pages. Svelte hydrates only where interaction lives: the command palette, the workspace and sandbox and the architecture diagrams. Everything else is static HTML.', source: site + 'src/pages/index.astro', label: 'Read the homepage source' },
       { title: 'A shell you can inspect.', text: 'The entrance is a small script, not a framework: a short identity assembly over an already readable page, skipped under reduced motion. The workspace responds to input without blocking navigation.', source: site + 'src/components/scenes/HeroScene.astro', label: 'Inspect the entrance script' },

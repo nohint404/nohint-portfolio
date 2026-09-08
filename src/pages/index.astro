@@ -7,3 +7,13 @@ import AboutScene from '../components/scenes/AboutScene.astro';
 import ContactScene from '../components/scenes/ContactScene.astro';
 ---
 <Layout><HeroScene /><ProjectsScene /><LabScene /><AboutScene /><ContactScene /></Layout>
+<script>
+  const scenes = Array.from(document.querySelectorAll<HTMLElement>('[data-scene]'));
+  if (scenes.length && 'IntersectionObserver' in window) {
+    const watcher = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) document.body.dataset.scene = (entry.target as HTMLElement).dataset.scene ?? ''; });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    scenes.forEach(scene => watcher.observe(scene));
+    addEventListener('pagehide', () => watcher.disconnect(), { once: true });
+  }
+</script>

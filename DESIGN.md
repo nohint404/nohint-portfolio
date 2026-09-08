@@ -4,7 +4,7 @@
 A warm open page, not a dark shell or dashboard. Bricolage Grotesque’s irregular, wide lettering carries the identity. A red signal dot and authored imperfect SVG stroke repeat from prompt to diagrams to contact. Project worlds alternate cobalt, sky, paper; the sandbox owns yellow. Source diagrams are explicitly not product screenshots.
 
 ## Tokens
-Paper `#FAF8F0`, ink `#20231F`, cobalt `#244BE8`, yellow `#F3D74B`, red-orange `#E64A2E`, sky `#DDECF5`. Muted ink `#53584F` on paper; pale text `#DCE4FF` on cobalt. Never use the red decoration for small essential text.
+Paper `#F5F2EA`, ink `#11110F`, cobalt `#315CFF`, yellow `#FFD84A`, signature red `#FF4A3D`, sky `#DDECF5`, terminal green `#77D66D` (text `#1E7A34`), near-black `#171715`. Muted ink `#5D564A` on paper, `#B7AF9D` on dark; pale text `#DCE4FF` on cobalt. Project accents from data: vs-notrack yellow, Monolith deep teal `#0E7C7B`, portfolio green-ink. Never use the red decoration for small essential text. Lab is the dark scene; body canvas interpolates between pale scene tints via `data-scene` (+45% viewport observer), instant under reduced motion.
 
 Self-hosted Latin Bricolage Grotesque variable, weights 200–800; technical strings use native monospace. Display identity 17.3vw capped at 282px; section type 48–96px; prose 17–22px, source details 65ch maximum. Tracking never tighter than −.04em. Fonts are preloaded; no third-party font requests.
 
